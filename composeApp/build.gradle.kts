@@ -14,7 +14,7 @@ kotlin {
             }
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -25,13 +25,19 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
-        
+
         androidMain.dependencies {
             implementation(libs.compose.ui)
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.voyager.androidx)
+            implementation(libs.voyager.koin)
+            implementation(libs.voyager.bottomSheetNavigator)
+            implementation(libs.voyager.navigator)
+            implementation(libs.koin.compose)
+            implementation(libs.voyager.transitions)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -40,6 +46,10 @@ kotlin {
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
             implementation(libs.koin.core)
+            implementation(libs.voyager.koin)
+            implementation(libs.voyager.bottomSheetNavigator)
+            implementation(libs.voyager.navigator)
+            implementation(libs.voyager.transitions)
         }
     }
 }
