@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.googleServices)
 }
 
 kotlin {
@@ -38,6 +39,8 @@ kotlin {
             implementation(libs.voyager.navigator)
             implementation(libs.koin.compose)
             implementation(libs.voyager.transitions)
+            implementation(project.dependencies.platform(libs.android.firebase.bom))
+            implementation(libs.android.firebase.analytics)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
