@@ -1,10 +1,13 @@
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import org.jetbrains.compose.resources.ExperimentalResourceApi
+import com.thondigital.nc.presentation.NCTheme
 
 @Composable
-fun App() {
-    MaterialTheme {
-
-    }
+fun App(darkTheme: Boolean, dynamicColor: Boolean) {
+    NCTheme(
+        darkTheme = darkTheme,
+        dynamicColor = dynamicColor,
+        content = {
+        }
+    )
 }
