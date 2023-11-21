@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.googleServices)
+    alias(libs.plugins.firebaseCrashlytics)
 }
 
 kotlin {
@@ -41,6 +42,7 @@ kotlin {
             implementation(libs.voyager.transitions)
             implementation(project.dependencies.platform(libs.android.firebase.bom))
             implementation(libs.android.firebase.analytics)
+            implementation(libs.android.firebase.crashlytics)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
