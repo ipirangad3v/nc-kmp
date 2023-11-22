@@ -46,7 +46,9 @@ object HomeScreen : Screen {
             }
             item {
                 EventsList(result.events) { event ->
-                    navigator.push(EventScreen(event.id))
+                    navigator.push(EventScreen(event.id) {
+                        navigator.pop()
+                    })
                 }
 
             }

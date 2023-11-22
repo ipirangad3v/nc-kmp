@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
             ) {
                 App(
 //                    darkTheme = isSystemInDarkTheme(),
-                    darkTheme = false,
+                    darkTheme = true,
                     dynamicColor = true,
                 )
 
