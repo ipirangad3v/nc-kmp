@@ -21,8 +21,8 @@ import org.jetbrains.compose.resources.painterResource
 fun TopBar() {
     Box(
         modifier = Modifier
-            .width(428.dp)
-            .height(105.dp)
+            .fillMaxWidth()
+            .height(60.dp)
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
