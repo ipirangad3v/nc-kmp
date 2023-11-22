@@ -5,7 +5,7 @@ import com.thondigital.nc.data.remote.FakeHomeRepository
 import com.thondigital.nc.domain.repository.EventRepository
 import com.thondigital.nc.domain.repository.HomeRepository
 import com.thondigital.nc.presentation.ui.calendar.CalendarScreenModel
-import com.thondigital.nc.presentation.ui.event.EventScreenModel
+import com.thondigital.nc.presentation.ui.event.EventDetailsScreenModel
 import com.thondigital.nc.presentation.ui.home.HomeScreenModel
 import org.koin.dsl.module
 
@@ -17,5 +17,5 @@ val appModule = module {
     //screen models
     factory { HomeScreenModel(get()) }
     factory { CalendarScreenModel() }
-    factory { EventScreenModel(get()) }
+    factory { EventDetailsScreenModel(get()) }
 }

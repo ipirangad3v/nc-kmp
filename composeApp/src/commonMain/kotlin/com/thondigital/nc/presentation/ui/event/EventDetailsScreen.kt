@@ -32,21 +32,26 @@ import com.thondigital.nc.presentation.ui.components.TopBar
 class EventDetailsScreen(private val eventId: Long, private val onBackClick: () -> Unit) : Screen {
     @Composable
     override fun Content() {
-        val screenModel = getScreenModel<EventScreenModel>()
+        val screenModel = getScreenModel<EventDetailsScreenModel>()
         val state by screenModel.state.collectAsState()
 
         Column(modifier = Modifier.fillMaxSize()) {
             when (state) {
-                is EventScreenModel.State.Loading -> Loading()
-                is EventScreenModel.State.Result  -> EventScreenContent((state as EventScreenModel.State.Result).result)
-                is EventScreenModel.State.Init    -> screenModel.getEventInfo(eventId)
+                is EventDetailsScreenModel.State.Loading -> Loading()
+                is EventDetailsScreenModel.State.Result  -> EventScreenContent(
+                    (state as EventDetailsScreenModel.State.Result).result
+                )
+
+                is EventDetailsScreenModel.State.Init    -> screenModel.getEventInfo(eventId)
 
             }
         }
     }
 
     @Composable
-    private fun EventScreenContent(result: EventDetailsResponse) {
+    private fun EventScreenContent(
+        result: EventDetailsResponse,
+    ) {
         val painter =
             rememberImagePainter(
                 result.image,

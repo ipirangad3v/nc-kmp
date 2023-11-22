@@ -6,9 +6,9 @@ import com.thondigital.nc.domain.models.EventDetailsResponse
 import com.thondigital.nc.domain.repository.EventRepository
 import kotlinx.coroutines.launch
 
-class EventScreenModel(
+class EventDetailsScreenModel(
     private val repository: EventRepository,
-) : StateScreenModel<EventScreenModel.State>(State.Init) {
+) : StateScreenModel<EventDetailsScreenModel.State>(State.Init) {
 
     sealed class State {
         data object Init : State()
