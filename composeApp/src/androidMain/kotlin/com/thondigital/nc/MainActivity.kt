@@ -22,7 +22,8 @@ class MainActivity : ComponentActivity() {
                 color = MaterialTheme.colors.background
             ) {
                 App(
-                    darkTheme = isSystemInDarkTheme(),
+//                    darkTheme = isSystemInDarkTheme(),
+                    darkTheme = false,
                     dynamicColor = true,
                 )
 

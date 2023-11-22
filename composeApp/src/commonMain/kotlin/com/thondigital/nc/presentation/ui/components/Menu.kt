@@ -10,9 +10,13 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
+import com.thondigital.nc.presentation.navigation.NavigationHelper.getNavigationItems
 
 @Composable
 fun Menu() {
+    val navigator = LocalNavigator.currentOrThrow
     LazyVerticalGrid(
         modifier = Modifier.fillMaxWidth().height(
             400.dp
@@ -23,8 +27,10 @@ fun Menu() {
         horizontalArrangement = Arrangement.Center
     ) {
 
-        items((1..9).toList()) {
-            MenuItem("Menu $it", "icon")
+        items(getNavigationItems()) {
+            MenuItem(it) {
+                navigator.push(it.screen)
+            }
         }
     }
 }

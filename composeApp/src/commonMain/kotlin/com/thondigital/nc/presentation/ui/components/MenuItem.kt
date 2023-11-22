@@ -1,9 +1,12 @@
 package com.thondigital.nc.presentation.ui.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
@@ -17,11 +20,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.thondigital.nc.presentation.ui.theme.blueMenuItem
+import com.thondigital.nc.domain.models.ClickableMenuItem
+import com.thondigital.nc.presentation.ui.theme.primaryLightBlue
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.painterResource
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
-fun MenuItem(name: String, icon: String) {
+fun MenuItem(item: ClickableMenuItem, onItemClick: () -> Unit) {
     Column(
+        modifier = Modifier.clickable { onItemClick() },
         horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
@@ -30,14 +38,21 @@ fun MenuItem(name: String, icon: String) {
             modifier = Modifier
                 .width(100.dp)
                 .height(100.dp)
-                .background(color = blueMenuItem, shape = RoundedCornerShape(size = 10.dp))
+                .background(color = primaryLightBlue, shape = RoundedCornerShape(size = 10.dp))
         ) {
-            Text(icon, modifier = Modifier.background(Color.Red))
+            Image(
+                modifier = Modifier
+                    .width(80.dp)
+                    .height(80.dp),
+                painter = painterResource(item.resourceId),
+                contentDescription = "logo",
+            )
         }
+        Spacer(modifier = Modifier.height(4.dp))
         Text(
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
-            text = name,
+            text = item.name,
             style = TextStyle(
                 fontSize = 12.sp,
                 fontWeight = FontWeight(300),

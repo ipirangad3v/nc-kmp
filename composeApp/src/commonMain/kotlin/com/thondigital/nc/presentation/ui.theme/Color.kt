@@ -4,7 +4,7 @@ import androidx.compose.ui.graphics.Color
 
 // LIGHT
 val primaryBlue = Color(0xff03113E)
-val blueMenuItem = Color(0xFF486BDC)
+val primaryLightBlue = Color(0xFF486BDC)
 val OnGreenLight = Color(0xffffffff)
 
 val GreenSecondaryLight = Color(0xff526350)

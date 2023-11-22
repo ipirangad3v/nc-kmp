@@ -22,8 +22,8 @@ actual fun NCTheme(
 //            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
 //        }
 
-        darkTheme                                                      -> DarkColorScheme
-        else                                                           -> LightColorScheme
+        darkTheme -> DarkColorScheme
+        else      -> LightColorScheme
 
     }
 
@@ -31,7 +31,7 @@ actual fun NCTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
+            window.statusBarColor = colorScheme.background.toArgb()
             WindowCompat.getInsetsController(
                 window,
                 view

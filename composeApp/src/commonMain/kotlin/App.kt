@@ -1,5 +1,6 @@
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.transitions.SlideTransition
 import com.thondigital.nc.presentation.NCTheme
 import com.thondigital.nc.presentation.ui.home.HomeScreen
 
@@ -10,6 +11,8 @@ fun App(darkTheme: Boolean, dynamicColor: Boolean) {
         dynamicColor = dynamicColor,
 
         ) {
-        Navigator(HomeScreen)
+        Navigator(HomeScreen) { navigator ->
+            SlideTransition(navigator)
+        }
     }
 }
