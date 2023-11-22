@@ -33,7 +33,7 @@ fun TopBar() {
                 modifier = Modifier
                     .width(50.dp)
                     .height(50.dp),
-                painter = painterResource("logonegativa.png"),
+                painter = painterResource("images/logonegativa.png"),
                 contentDescription = "logo",
             )
             Spacer(modifier = Modifier.width(8.dp))

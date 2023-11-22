@@ -44,8 +44,10 @@ fun MenuItem(item: ClickableMenuItem, onItemClick: () -> Unit) {
                 modifier = Modifier
                     .width(80.dp)
                     .height(80.dp),
-                painter = painterResource(item.resourceId),
                 contentDescription = "logo",
+                painter = painterResource(
+                    "images/${item.resourceId}"
+                )
             )
         }
         Spacer(modifier = Modifier.height(4.dp))
@@ -60,5 +62,6 @@ fun MenuItem(item: ClickableMenuItem, onItemClick: () -> Unit) {
                 textAlign = TextAlign.Center,
             )
         )
+        Spacer(modifier = Modifier.height(16.dp))
     }
 }
