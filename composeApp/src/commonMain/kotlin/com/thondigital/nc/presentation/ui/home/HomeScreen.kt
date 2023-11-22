@@ -15,7 +15,7 @@ import com.thondigital.nc.presentation.ui.components.Loading
 import com.thondigital.nc.presentation.ui.components.Menu
 import com.thondigital.nc.presentation.ui.components.TopBar
 import com.thondigital.nc.presentation.ui.components.EventsList
-import com.thondigital.nc.presentation.ui.event.EventScreen
+import com.thondigital.nc.presentation.ui.event.EventDetailsScreen
 import com.thondigital.nc.presentation.ui.home.HomeScreenModel.State.Init
 import com.thondigital.nc.presentation.ui.home.HomeScreenModel.State.Loading
 import com.thondigital.nc.presentation.ui.home.HomeScreenModel.State.Result
@@ -45,12 +45,13 @@ object HomeScreen : Screen {
                 TopBar()
             }
             item {
-                EventsList(result.events) { event ->
-                    navigator.push(EventScreen(event.id) {
-                        navigator.pop()
-                    })
+                if (result.events.isNotEmpty()) {
+                    EventsList(result.events) { event ->
+                        navigator.push(EventDetailsScreen(event.id) {
+                            navigator.pop()
+                        })
+                    }
                 }
-
             }
             item {
                 Menu()

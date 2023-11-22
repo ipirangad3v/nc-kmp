@@ -22,7 +22,9 @@ class FakeEventRepository : EventRepository {
                           "Que a paz e a graça estejam convosco.\n" +
                           "\n",
             image = "https://andremartinsoficial.com/wp-content/uploads/2021/04/o-motivo-do-nosso-louvor-andre-martins.jpg",
-            location = "Sede - Ministério Nação da Cruz, Rua dos aventais, Nº 5000, Macapá - Ap",
+            location = "Sede do Ministério Nação da Cruz, Rua dos aventais, Nº 5000, Macapá - Ap",
+            startingTime = "08:00",
+            endingTime = "18:00",
         )
     }
 }

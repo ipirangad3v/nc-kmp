@@ -7,4 +7,6 @@ data class EventDetailsResponse(
     val description: String,
     val image: String,
     val location: String,
+    val startingTime: String,
+    val endingTime: String,
 )
