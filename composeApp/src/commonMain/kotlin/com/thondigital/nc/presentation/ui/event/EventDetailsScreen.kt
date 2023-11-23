@@ -25,11 +25,12 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import com.seiko.imageloader.rememberImagePainter
-import com.thondigital.nc.domain.models.EventDetailsResponse
+import com.thondigital.nc.data.remote.responses.EventDetailsResponse
 import com.thondigital.nc.presentation.ui.components.Loading
 import com.thondigital.nc.presentation.ui.components.TopBar
 
-class EventDetailsScreen(private val eventId: Long, private val onBackClick: () -> Unit) : Screen {
+class EventDetailsScreen(private val eventId: String, private val onBackClick: () -> Unit) :
+    Screen {
     @Composable
     override fun Content() {
         val screenModel = getScreenModel<EventDetailsScreenModel>()
@@ -38,12 +39,12 @@ class EventDetailsScreen(private val eventId: Long, private val onBackClick: () 
         Column(modifier = Modifier.fillMaxSize()) {
             when (state) {
                 is EventDetailsScreenModel.State.Loading -> Loading()
-                is EventDetailsScreenModel.State.Result ->
+                is EventDetailsScreenModel.State.Result  ->
                     EventScreenContent(
                         (state as EventDetailsScreenModel.State.Result).result,
                     )
 
-                is EventDetailsScreenModel.State.Init -> screenModel.getEventInfo(eventId)
+                is EventDetailsScreenModel.State.Init    -> screenModel.getEventInfo(eventId)
             }
         }
     }
@@ -51,18 +52,22 @@ class EventDetailsScreen(private val eventId: Long, private val onBackClick: () 
     @Composable
     private fun EventScreenContent(result: EventDetailsResponse) {
         val painter =
-            rememberImagePainter(
-                result.image,
-                contentScale = ContentScale.Crop,
-            )
+            result.imageUrl?.let {
+                rememberImagePainter(
+                    it,
+                    contentScale = ContentScale.Crop,
+                )
+            }
         LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             item { TopBar(showBackButton = true) { onBackClick() } }
             item {
-                Image(
-                    modifier = Modifier.fillMaxWidth(),
-                    painter = painter,
-                    contentDescription = "image",
-                )
+                if (painter != null) {
+                    Image(
+                        modifier = Modifier.fillMaxWidth(),
+                        painter = painter,
+                        contentDescription = "image",
+                    )
+                }
             }
             item {
                 EventInfo(result)
@@ -86,7 +91,7 @@ class EventDetailsScreen(private val eventId: Long, private val onBackClick: () 
                     fontStyle = FontStyle.Italic,
                 )
                 Text(
-                    text = "${result.date} das ${result.startingTime} às ${result.endingTime}.",
+                    text = "${result.date} das ${result.startTime} às ${result.endTime}.",
                 )
             }
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {

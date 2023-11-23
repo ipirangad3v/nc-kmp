@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.googleServices)
     alias(libs.plugins.firebaseCrashlytics)
+    kotlin("plugin.serialization") version "1.9.0" // This lines
 }
 
 kotlin {
@@ -56,6 +57,10 @@ kotlin {
             implementation(libs.voyager.navigator)
             implementation(libs.voyager.transitions)
             implementation(libs.qdsfdhvh.image.loader)
+
+            implementation(libs.firestore)
+            implementation(libs.firebase.common)
+            implementation(libs.kotlinx.serialization.json) // This line
         }
     }
 }
@@ -97,5 +102,6 @@ android {
     }
     dependencies {
         debugImplementation(libs.compose.ui.tooling)
+        implementation(libs.firebase.common)
     }
 }

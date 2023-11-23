@@ -1,9 +1,7 @@
 package com.thondigital.nc.di
 
-import com.thondigital.nc.data.remote.FakeEventRepository
-import com.thondigital.nc.data.remote.FakeHomeRepository
-import com.thondigital.nc.domain.repository.EventRepository
-import com.thondigital.nc.domain.repository.HomeRepository
+import com.thondigital.nc.data.remote.FireStoreRepositoryImpl
+import com.thondigital.nc.domain.repository.FirestoreRepository
 import com.thondigital.nc.presentation.ui.calendar.CalendarScreenModel
 import com.thondigital.nc.presentation.ui.event.EventDetailsScreenModel
 import com.thondigital.nc.presentation.ui.home.HomeScreenModel
@@ -12,8 +10,8 @@ import org.koin.dsl.module
 val appModule =
     module {
         // repositories
-        single<HomeRepository> { FakeHomeRepository() }
-        single<EventRepository> { FakeEventRepository() }
+        single<FirestoreRepository> { FireStoreRepositoryImpl() }
+
 
         // screen models
         factory { HomeScreenModel(get()) }

@@ -18,13 +18,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.thondigital.nc.domain.models.EventModel
+import com.thondigital.nc.data.remote.responses.EventDetailsResponse
 import com.thondigital.nc.presentation.ui.theme.primaryLightBlue
 
 @Composable
 fun EventsList(
-    warnings: List<EventModel>,
-    onEventClick: (EventModel) -> Unit,
+    warnings: List<EventDetailsResponse>,
+    onEventClick: (EventDetailsResponse) -> Unit,
 ) {
     Column(
         modifier = Modifier.fillMaxWidth().padding(16.dp),

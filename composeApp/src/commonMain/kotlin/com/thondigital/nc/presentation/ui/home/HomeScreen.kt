@@ -10,7 +10,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.thondigital.nc.domain.models.HomeResponse
+import com.thondigital.nc.data.remote.responses.HomeResponse
 import com.thondigital.nc.presentation.ui.components.EventsList
 import com.thondigital.nc.presentation.ui.components.Loading
 import com.thondigital.nc.presentation.ui.components.Menu
