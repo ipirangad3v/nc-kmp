@@ -27,7 +27,10 @@ import org.jetbrains.compose.resources.painterResource
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-fun MenuItem(item: ClickableMenuItem, onItemClick: () -> Unit) {
+fun MenuItem(
+    item: ClickableMenuItem,
+    onItemClick: () -> Unit,
+) {
     Column(
         modifier = Modifier.clickable { onItemClick() },
         horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally,
@@ -35,19 +38,22 @@ fun MenuItem(item: ClickableMenuItem, onItemClick: () -> Unit) {
     ) {
         Box(
             contentAlignment = androidx.compose.ui.Alignment.Center,
-            modifier = Modifier
-                .width(100.dp)
-                .height(100.dp)
-                .background(color = primaryLightBlue, shape = RoundedCornerShape(size = 10.dp))
+            modifier =
+                Modifier
+                    .width(100.dp)
+                    .height(100.dp)
+                    .background(color = primaryLightBlue, shape = RoundedCornerShape(size = 10.dp)),
         ) {
             Image(
-                modifier = Modifier
-                    .width(80.dp)
-                    .height(80.dp),
+                modifier =
+                    Modifier
+                        .width(80.dp)
+                        .height(80.dp),
                 contentDescription = "logo",
-                painter = painterResource(
-                    "images/${item.resourceId}"
-                )
+                painter =
+                    painterResource(
+                        "images/${item.resourceId}",
+                    ),
             )
         }
         Spacer(modifier = Modifier.height(4.dp))
@@ -55,12 +61,13 @@ fun MenuItem(item: ClickableMenuItem, onItemClick: () -> Unit) {
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
             text = item.name,
-            style = TextStyle(
-                fontSize = 12.sp,
-                fontWeight = FontWeight(300),
-                color = Color(0xFF494A59),
-                textAlign = TextAlign.Center,
-            )
+            style =
+                TextStyle(
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight(300),
+                    color = Color(0xFF494A59),
+                    textAlign = TextAlign.Center,
+                ),
         )
         Spacer(modifier = Modifier.height(16.dp))
     }

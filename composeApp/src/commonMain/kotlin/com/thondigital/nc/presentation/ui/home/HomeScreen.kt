@@ -11,15 +11,14 @@ import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.thondigital.nc.domain.models.HomeResponse
+import com.thondigital.nc.presentation.ui.components.EventsList
 import com.thondigital.nc.presentation.ui.components.Loading
 import com.thondigital.nc.presentation.ui.components.Menu
 import com.thondigital.nc.presentation.ui.components.TopBar
-import com.thondigital.nc.presentation.ui.components.EventsList
 import com.thondigital.nc.presentation.ui.event.EventDetailsScreen
 import com.thondigital.nc.presentation.ui.home.HomeScreenModel.State.Init
 import com.thondigital.nc.presentation.ui.home.HomeScreenModel.State.Loading
 import com.thondigital.nc.presentation.ui.home.HomeScreenModel.State.Result
-
 
 object HomeScreen : Screen {
     @Composable
@@ -29,9 +28,8 @@ object HomeScreen : Screen {
 
         when (state) {
             is Loading -> Loading()
-            is Result  -> HomeContent((state as Result).result)
-            is Init    -> screenModel.getHome()
-
+            is Result -> HomeContent((state as Result).result)
+            is Init -> screenModel.getHome()
         }
     }
 
@@ -39,7 +37,7 @@ object HomeScreen : Screen {
     private fun HomeContent(result: HomeResponse) {
         val navigator = LocalNavigator.currentOrThrow
         LazyColumn(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
         ) {
             item {
                 TopBar()
@@ -47,9 +45,11 @@ object HomeScreen : Screen {
             item {
                 if (result.events.isNotEmpty()) {
                     EventsList(result.events) { event ->
-                        navigator.push(EventDetailsScreen(event.id) {
-                            navigator.pop()
-                        })
+                        navigator.push(
+                            EventDetailsScreen(event.id) {
+                                navigator.pop()
+                            },
+                        )
                     }
                 }
             }
@@ -57,7 +57,5 @@ object HomeScreen : Screen {
                 Menu()
             }
         }
-
-
     }
 }

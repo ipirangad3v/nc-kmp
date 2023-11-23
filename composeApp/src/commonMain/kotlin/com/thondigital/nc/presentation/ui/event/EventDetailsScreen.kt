@@ -38,20 +38,18 @@ class EventDetailsScreen(private val eventId: Long, private val onBackClick: () 
         Column(modifier = Modifier.fillMaxSize()) {
             when (state) {
                 is EventDetailsScreenModel.State.Loading -> Loading()
-                is EventDetailsScreenModel.State.Result  -> EventScreenContent(
-                    (state as EventDetailsScreenModel.State.Result).result
-                )
+                is EventDetailsScreenModel.State.Result ->
+                    EventScreenContent(
+                        (state as EventDetailsScreenModel.State.Result).result,
+                    )
 
-                is EventDetailsScreenModel.State.Init    -> screenModel.getEventInfo(eventId)
-
+                is EventDetailsScreenModel.State.Init -> screenModel.getEventInfo(eventId)
             }
         }
     }
 
     @Composable
-    private fun EventScreenContent(
-        result: EventDetailsResponse,
-    ) {
+    private fun EventScreenContent(result: EventDetailsResponse) {
         val painter =
             rememberImagePainter(
                 result.image,
@@ -70,7 +68,6 @@ class EventDetailsScreen(private val eventId: Long, private val onBackClick: () 
                 EventInfo(result)
             }
         }
-
     }
 
     @Composable
@@ -78,14 +75,15 @@ class EventDetailsScreen(private val eventId: Long, private val onBackClick: () 
         Column(
             modifier = Modifier.fillMaxWidth().padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(text = result.title, fontSize = TextUnit(24f, TextUnitType.Sp), fontWeight = Bold)
             Spacer(modifier = Modifier.height(8.dp))
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                 Text(
-                    text = "Quando:", fontWeight = Bold,
-                    fontStyle = FontStyle.Italic
+                    text = "Quando:",
+                    fontWeight = Bold,
+                    fontStyle = FontStyle.Italic,
                 )
                 Text(
                     text = "${result.date} das ${result.startingTime} às ${result.endingTime}.",
@@ -93,8 +91,9 @@ class EventDetailsScreen(private val eventId: Long, private val onBackClick: () 
             }
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                 Text(
-                    text = "Local: ", fontWeight = Bold,
-                    fontStyle = FontStyle.Italic
+                    text = "Local: ",
+                    fontWeight = Bold,
+                    fontStyle = FontStyle.Italic,
                 )
                 Text(text = "${result.location}.")
             }
@@ -102,6 +101,5 @@ class EventDetailsScreen(private val eventId: Long, private val onBackClick: () 
 
             Text(text = result.description)
         }
-
     }
 }

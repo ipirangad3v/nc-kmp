@@ -12,6 +12,6 @@ actual fun NCTheme(
 ) {
     MaterialTheme(
         colors = LightColorScheme,
-        content = content
+        content = content,
     )
 }

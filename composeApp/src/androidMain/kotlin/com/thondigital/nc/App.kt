@@ -16,5 +16,4 @@ class NCApp : Application() {
             modules(appModule)
         }
     }
-
 }

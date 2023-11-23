@@ -9,10 +9,11 @@ import kotlinx.coroutines.launch
 class HomeScreenModel(
     private val repository: HomeRepository,
 ) : StateScreenModel<HomeScreenModel.State>(State.Init) {
-
     sealed class State {
         data object Init : State()
+
         data object Loading : State()
+
         data class Result(
             val result: HomeResponse,
         ) : State()
@@ -24,6 +25,4 @@ class HomeScreenModel(
             mutableState.value = State.Result(repository.getHome())
         }
     }
-
-
 }

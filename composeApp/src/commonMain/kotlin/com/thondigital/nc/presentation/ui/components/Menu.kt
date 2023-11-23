@@ -18,15 +18,15 @@ import com.thondigital.nc.presentation.navigation.NavigationHelper.getNavigation
 fun Menu() {
     val navigator = LocalNavigator.currentOrThrow
     LazyVerticalGrid(
-        modifier = Modifier.fillMaxWidth().height(
-            400.dp
-        ),
+        modifier =
+            Modifier.fillMaxWidth().height(
+                400.dp,
+            ),
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
         columns = GridCells.Adaptive(minSize = 100.dp),
         verticalArrangement = Arrangement.Center,
-        horizontalArrangement = Arrangement.Center
+        horizontalArrangement = Arrangement.Center,
     ) {
-
         items(getNavigationItems()) {
             MenuItem(it) {
                 navigator.push(it.screen)

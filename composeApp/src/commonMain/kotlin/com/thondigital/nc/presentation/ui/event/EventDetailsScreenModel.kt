@@ -9,10 +9,11 @@ import kotlinx.coroutines.launch
 class EventDetailsScreenModel(
     private val repository: EventRepository,
 ) : StateScreenModel<EventDetailsScreenModel.State>(State.Init) {
-
     sealed class State {
         data object Init : State()
+
         data object Loading : State()
+
         data class Result(
             val result: EventDetailsResponse,
         ) : State()
@@ -24,6 +25,4 @@ class EventDetailsScreenModel(
             mutableState.value = State.Result(repository.getEventById(eventId = eventId))
         }
     }
-
-
 }

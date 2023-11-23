@@ -20,18 +20,23 @@ import org.jetbrains.compose.resources.painterResource
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-fun TopBar(showBackButton: Boolean = false, onBackClick: () -> Unit = {}) {
+fun TopBar(
+    showBackButton: Boolean = false,
+    onBackClick: () -> Unit = {},
+) {
     Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(60.dp).padding(8.dp)
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .height(60.dp).padding(8.dp),
     ) {
         if (showBackButton) {
             Box(
-                modifier = Modifier
-                    .height(60.dp)
-                    .padding(8.dp)
-                    .clickable { onBackClick() }
+                modifier =
+                    Modifier
+                        .height(60.dp)
+                        .padding(8.dp)
+                        .clickable { onBackClick() },
             ) {
                 Text(
                     text = "Voltar",
@@ -42,19 +47,18 @@ fun TopBar(showBackButton: Boolean = false, onBackClick: () -> Unit = {}) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
+            horizontalArrangement = Arrangement.Center,
         ) {
             Image(
-                modifier = Modifier
-                    .width(50.dp)
-                    .height(50.dp),
+                modifier =
+                    Modifier
+                        .width(50.dp)
+                        .height(50.dp),
                 painter = painterResource("images/logonegativa.png"),
                 contentDescription = "logo",
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text(text = "Nação da Cruz", color = primaryBlue)
-
         }
-
     }
 }

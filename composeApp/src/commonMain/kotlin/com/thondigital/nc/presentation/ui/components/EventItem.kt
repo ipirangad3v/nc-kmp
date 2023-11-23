@@ -22,60 +22,61 @@ import com.thondigital.nc.domain.models.EventModel
 import com.thondigital.nc.presentation.ui.theme.primaryLightBlue
 
 @Composable
-fun EventsList(warnings: List<EventModel>, onEventClick: (EventModel) -> Unit) {
-
+fun EventsList(
+    warnings: List<EventModel>,
+    onEventClick: (EventModel) -> Unit,
+) {
     Column(
         modifier = Modifier.fillMaxWidth().padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
     ) {
         Text(text = "Próximos eventos")
         Spacer(modifier = Modifier.height(8.dp))
         warnings.forEach { event ->
             Box(
-                modifier = Modifier
-                    .padding(8.dp)
-                    .fillMaxWidth()
-                    .height(77.dp)
-                    .background(color = Color(0xFF486BDC), shape = RoundedCornerShape(size = 10.dp))
-                    .background(
-                        color = primaryLightBlue,
-                        shape = RoundedCornerShape(size = 10.dp)
-                    ).clickable { onEventClick(event) },
-                contentAlignment = Alignment.Center
+                modifier =
+                    Modifier
+                        .padding(8.dp)
+                        .fillMaxWidth()
+                        .height(77.dp)
+                        .background(color = Color(0xFF486BDC), shape = RoundedCornerShape(size = 10.dp))
+                        .background(
+                            color = primaryLightBlue,
+                            shape = RoundedCornerShape(size = 10.dp),
+                        ).clickable { onEventClick(event) },
+                contentAlignment = Alignment.Center,
             ) {
                 Row {
                     Text(
                         text = event.date,
                         modifier = Modifier.padding(8.dp).fillMaxHeight(),
-                        color = Color.White
+                        color = Color.White,
                     )
                     Box(
                         contentAlignment = Alignment.Center,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(4.dp)
-                            .height(68.dp)
-                            .background(
-                                color = Color(0xFF486BDC),
-                                shape = RoundedCornerShape(size = 10.dp)
-                            )
-                            .background(
-                                color = Color(0xFFA5BAFF),
-                                shape = RoundedCornerShape(size = 10.dp)
-                            )
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(4.dp)
+                                .height(68.dp)
+                                .background(
+                                    color = Color(0xFF486BDC),
+                                    shape = RoundedCornerShape(size = 10.dp),
+                                )
+                                .background(
+                                    color = Color(0xFFA5BAFF),
+                                    shape = RoundedCornerShape(size = 10.dp),
+                                ),
                     ) {
                         Text(
                             text = event.title,
                             modifier = Modifier.padding(8.dp),
-                            color = Color.White
+                            color = Color.White,
                         )
-
                     }
                 }
             }
         }
     }
-
-
 }

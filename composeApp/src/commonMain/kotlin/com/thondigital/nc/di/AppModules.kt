@@ -9,13 +9,14 @@ import com.thondigital.nc.presentation.ui.event.EventDetailsScreenModel
 import com.thondigital.nc.presentation.ui.home.HomeScreenModel
 import org.koin.dsl.module
 
-val appModule = module {
-    //repositories
-    single<HomeRepository> { FakeHomeRepository() }
-    single<EventRepository> { FakeEventRepository() }
+val appModule =
+    module {
+        // repositories
+        single<HomeRepository> { FakeHomeRepository() }
+        single<EventRepository> { FakeEventRepository() }
 
-    //screen models
-    factory { HomeScreenModel(get()) }
-    factory { CalendarScreenModel() }
-    factory { EventDetailsScreenModel(get()) }
-}
+        // screen models
+        factory { HomeScreenModel(get()) }
+        factory { CalendarScreenModel() }
+        factory { EventDetailsScreenModel(get()) }
+    }
