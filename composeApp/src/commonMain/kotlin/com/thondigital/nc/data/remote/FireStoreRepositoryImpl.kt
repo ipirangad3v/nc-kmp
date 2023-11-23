@@ -14,9 +14,12 @@ class FireStoreRepositoryImpl : FirestoreRepository {
         try {
             val events =
                 eventsCollection.get()
-            return HomeResponse(events = events.documents.map {
-                it.data<EventDetailsResponse>().apply { id = it.id }
-            })
+            return HomeResponse(
+                events =
+                    events.documents.map {
+                        it.data<EventDetailsResponse>().apply { id = it.id }
+                    },
+            )
         } catch (e: Exception) {
             throw e
         }

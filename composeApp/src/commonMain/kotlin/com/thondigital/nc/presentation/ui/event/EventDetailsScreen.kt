@@ -39,12 +39,12 @@ class EventDetailsScreen(private val eventId: String, private val onBackClick: (
         Column(modifier = Modifier.fillMaxSize()) {
             when (state) {
                 is EventDetailsScreenModel.State.Loading -> Loading()
-                is EventDetailsScreenModel.State.Result  ->
+                is EventDetailsScreenModel.State.Result ->
                     EventScreenContent(
                         (state as EventDetailsScreenModel.State.Result).result,
                     )
 
-                is EventDetailsScreenModel.State.Init    -> screenModel.getEventInfo(eventId)
+                is EventDetailsScreenModel.State.Init -> screenModel.getEventInfo(eventId)
             }
         }
     }

@@ -12,7 +12,6 @@ val appModule =
         // repositories
         single<FirestoreRepository> { FireStoreRepositoryImpl() }
 
-
         // screen models
         factory { HomeScreenModel(get()) }
         factory { CalendarScreenModel() }

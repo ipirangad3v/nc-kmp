@@ -5,5 +5,6 @@ import com.thondigital.nc.data.remote.responses.HomeResponse
 
 interface FirestoreRepository {
     suspend fun getHome(): HomeResponse
+
     suspend fun getEventById(eventId: String): EventDetailsResponse
 }
