@@ -1,6 +1,6 @@
 import SwiftUI
-//import FirebaseCore
 import ComposeApp
+import Firebase
 
 @main
 struct iOSApp: App {
@@ -18,7 +18,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
       HelperKt.doInitKoin()
-//    FirebaseApp.configure()
+      FirebaseApp.configure()
 
     return true
   }
