@@ -29,14 +29,14 @@ fun Loading() {
         ) {
             Image(
                 modifier =
-                Modifier
-                    .width(200.dp)
-                    .height(200.dp),
+                    Modifier
+                        .width(200.dp)
+                        .height(200.dp),
                 contentDescription = "carregando",
                 painter =
-                painterResource(
-                    "images/logonegativa.png",
-                ),
+                    painterResource(
+                        "images/logonegativa.png",
+                    ),
             )
             Spacer(modifier = Modifier.height(16.dp))
             CircularProgressIndicator()
