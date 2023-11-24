@@ -60,7 +60,8 @@ kotlin {
 
             implementation(libs.firestore)
             implementation(libs.firebase.common)
-            implementation(libs.kotlinx.serialization.json) // This line
+            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.kotlinx.datetime)
         }
     }
 }

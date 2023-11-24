@@ -13,53 +13,13 @@ object NavigationHelper {
             ),
             ClickableMenuItem(
                 screen = CalendarScreen,
-                resourceId = "calendar.png",
-                name = "Calendário",
-            ),
-            ClickableMenuItem(
-                screen = CalendarScreen,
-                resourceId = "calendar.png",
-                name = "Calendário",
-            ),
-            ClickableMenuItem(
-                screen = CalendarScreen,
-                resourceId = "calendar.png",
-                name = "Calendário",
-            ),
-            ClickableMenuItem(
-                screen = CalendarScreen,
-                resourceId = "calendar.png",
-                name = "Calendário",
-            ),
-            ClickableMenuItem(
-                screen = CalendarScreen,
                 resourceId = "podcast.png",
                 name = "Podcast",
             ),
             ClickableMenuItem(
                 screen = CalendarScreen,
-                resourceId = "podcast.png",
-                name = "Podcast",
-            ),
-            ClickableMenuItem(
-                screen = CalendarScreen,
-                resourceId = "podcast.png",
-                name = "Podcast",
-            ),
-            ClickableMenuItem(
-                screen = CalendarScreen,
-                resourceId = "podcast.png",
-                name = "Podcast",
-            ),
-            ClickableMenuItem(
-                screen = CalendarScreen,
-                resourceId = "podcast.png",
-                name = "Podcast",
-            ),
-            ClickableMenuItem(
-                screen = CalendarScreen,
-                resourceId = "podcast.png",
-                name = "Podcast",
+                resourceId = "article.png",
+                name = "Artigos",
             ),
         )
 }

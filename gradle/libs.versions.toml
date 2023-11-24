@@ -27,6 +27,7 @@ firebase-common = "20.4.2"
 plugin-serialization = "1.9.0"
 firestore = "1.8.1"
 kotlinx-serialization-json = "1.5.1"
+datetime = "0.4.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -62,6 +63,7 @@ qdsfdhvh-image-loader = { module = "io.github.qdsfdhvh:image-loader", version.re
 firebase-common = { module = "dev.gitlive:firebase-common", version.ref = "firestore" }
 firestore = { module = "dev.gitlive:firebase-firestore", version.ref = "firestore" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "datetime" }
 
 [plugins]
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
