@@ -36,15 +36,16 @@ object HomeScreen : Screen {
         val screenModel = getScreenModel<HomeScreenModel>()
         val state by screenModel.state.collectAsState()
 
-        val pullRefreshState = rememberPullRefreshState(
-            refreshing = screenModel.state.value is Loading,
-            onRefresh = screenModel::getHome,
-        )
+        val pullRefreshState =
+            rememberPullRefreshState(
+                refreshing = screenModel.state.value is Loading,
+                onRefresh = screenModel::getHome,
+            )
 
         when (state) {
             is Loading -> Loading()
-            is Result  -> HomeContent((state as Result).result, pullRefreshState, screenModel)
-            is Init    -> screenModel.getHome()
+            is Result -> HomeContent((state as Result).result, pullRefreshState, screenModel)
+            is Init -> screenModel.getHome()
         }
     }
 
@@ -82,9 +83,10 @@ object HomeScreen : Screen {
                 refreshing = screenModel.state.value is Loading,
                 state = pullRefreshState,
                 contentColor = primaryBlue,
-                modifier = Modifier.align(
-                    Alignment.TopCenter,
-                ),
+                modifier =
+                    Modifier.align(
+                        Alignment.TopCenter,
+                    ),
                 backgroundColor = Color.Transparent,
             )
         }
