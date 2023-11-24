@@ -1,11 +1,19 @@
 package com.thondigital.nc.presentation.ui.home
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.pullrefresh.PullRefreshIndicator
+import androidx.compose.material.pullrefresh.PullRefreshState
+import androidx.compose.material.pullrefresh.pullRefresh
+import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
@@ -19,43 +27,66 @@ import com.thondigital.nc.presentation.ui.event.EventDetailsScreen
 import com.thondigital.nc.presentation.ui.home.HomeScreenModel.State.Init
 import com.thondigital.nc.presentation.ui.home.HomeScreenModel.State.Loading
 import com.thondigital.nc.presentation.ui.home.HomeScreenModel.State.Result
+import com.thondigital.nc.presentation.ui.theme.primaryBlue
 
 object HomeScreen : Screen {
+    @OptIn(ExperimentalMaterialApi::class)
     @Composable
     override fun Content() {
         val screenModel = getScreenModel<HomeScreenModel>()
         val state by screenModel.state.collectAsState()
 
+        val pullRefreshState = rememberPullRefreshState(
+            refreshing = screenModel.state.value is Loading,
+            onRefresh = screenModel::getHome,
+        )
+
         when (state) {
             is Loading -> Loading()
-            is Result -> HomeContent((state as Result).result)
-            is Init -> screenModel.getHome()
+            is Result  -> HomeContent((state as Result).result, pullRefreshState, screenModel)
+            is Init    -> screenModel.getHome()
         }
     }
 
+    @OptIn(ExperimentalMaterialApi::class)
     @Composable
-    private fun HomeContent(result: HomeResponse) {
+    private fun HomeContent(
+        result: HomeResponse,
+        pullRefreshState: PullRefreshState,
+        screenModel: HomeScreenModel,
+    ) {
         val navigator = LocalNavigator.currentOrThrow
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
+        Box(
+            modifier = Modifier.fillMaxSize().pullRefresh(pullRefreshState),
         ) {
-            item {
-                TopBar()
-            }
-            item {
-                if (result.events.isNotEmpty()) {
-                    EventsList(result.events) { event ->
-                        navigator.push(
-                            EventDetailsScreen(event.id) {
-                                navigator.pop()
-                            },
-                        )
+            LazyColumn {
+                item {
+                    TopBar()
+                }
+                item {
+                    if (result.events.isNotEmpty()) {
+                        EventsList(result.events) { event ->
+                            navigator.push(
+                                EventDetailsScreen(event.id) {
+                                    navigator.pop()
+                                },
+                            )
+                        }
                     }
                 }
+                item {
+                    Menu()
+                }
             }
-            item {
-                Menu()
-            }
+            PullRefreshIndicator(
+                refreshing = screenModel.state.value is Loading,
+                state = pullRefreshState,
+                contentColor = primaryBlue,
+                modifier = Modifier.align(
+                    Alignment.TopCenter,
+                ),
+                backgroundColor = Color.Transparent,
+            )
         }
     }
 }
