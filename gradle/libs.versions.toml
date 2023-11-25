@@ -72,6 +72,7 @@ sqlDelight-native-driver = { module = "com.squareup.sqldelight:native-driver", v
 sqlDelight-android-driver = { module = "com.squareup.sqldelight:android-driver", version.ref = "sqlDelight" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-ios = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 
 [plugins]
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

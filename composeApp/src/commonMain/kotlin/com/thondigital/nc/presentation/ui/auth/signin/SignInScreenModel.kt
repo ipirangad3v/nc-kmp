@@ -91,9 +91,9 @@ class SignInScreenModel(
     private fun setEmailErrorState(emailError: AuthError?) {
         emailError?.let {
             if (it == AuthError.EmptyField) {
-                setState { copy(emailError = "") }
+                setState { copy(emailError = "Campo vazio") }
             } else {
-                setState { copy(emailError = "") }
+                setState { copy(emailError = "Por favor insira um email valido") }
             }
         } ?: setState { copy(emailError = "") }
     }
@@ -101,9 +101,9 @@ class SignInScreenModel(
     private fun setPasswordErrorState(passwordError: AuthError?) {
         passwordError?.let {
             if (it == AuthError.EmptyField) {
-                setState { copy(passwordError = "") }
+                setState { copy(passwordError = "Campo vazio") }
             } else {
-                setState { copy(passwordError = "") }
+                setState { copy(passwordError = "a senha precisa ter no minimo 8 digitos") }
             }
         } ?: setState { copy(passwordError = "") }
     }

@@ -1,5 +1,6 @@
 package com.thondigital.nc.presentation.ui.components
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -23,23 +24,25 @@ fun Loading() {
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-        ) {
-            Image(
-                modifier =
-                    Modifier
-                        .width(200.dp)
-                        .height(200.dp),
-                contentDescription = "carregando",
-                painter =
-                    painterResource(
-                        "images/logonegativa.png",
-                    ),
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            CircularProgressIndicator()
+        AnimatedVisibility(true) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+            ) {
+                Image(
+                    modifier =
+                        Modifier
+                            .width(200.dp)
+                            .height(200.dp),
+                    contentDescription = "carregando",
+                    painter =
+                        painterResource(
+                            "images/logonegativa.png",
+                        ),
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                CircularProgressIndicator()
+            }
         }
     }
 }

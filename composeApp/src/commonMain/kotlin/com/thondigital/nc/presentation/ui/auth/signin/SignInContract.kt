@@ -6,19 +6,19 @@ class SignInContract {
 
         data class PasswordChanged(val password: String) : SignInEvent()
 
-        object SignInButtonClicked : SignInEvent()
+        data object SignInButtonClicked : SignInEvent()
 
-        object SignUpTextViewClicked : SignInEvent()
+        data object SignUpTextViewClicked : SignInEvent()
     }
 
     sealed class SignInViewEffect {
         data class ShowSnackBarError(val message: String) : SignInViewEffect()
 
-        object NavigateToSignUp : SignInViewEffect()
+        data object NavigateToSignUp : SignInViewEffect()
 
-        object NavigateToHome : SignInViewEffect()
+        data object NavigateToHome : SignInViewEffect()
 
-        object Init : SignInViewEffect()
+        data object Init : SignInViewEffect()
     }
 
     data class SignInViewState(
