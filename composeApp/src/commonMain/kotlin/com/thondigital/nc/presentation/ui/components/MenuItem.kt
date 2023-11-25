@@ -20,7 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.thondigital.nc.domain.models.ClickableMenuItem
+import com.thondigital.nc.domain.model.ClickableMenuItem
 import com.thondigital.nc.presentation.ui.theme.primaryLightBlue
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource

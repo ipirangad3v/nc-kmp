@@ -29,6 +29,7 @@ firestore = "1.8.1"
 kotlinx-serialization-json = "1.5.1"
 datetime = "0.4.0"
 sqlDelight = "1.5.5"
+connectivity-status= "1.2.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -72,6 +73,7 @@ sqlDelight-native-driver = { module = "com.squareup.sqldelight:native-driver", v
 sqlDelight-android-driver = { module = "com.squareup.sqldelight:android-driver", version.ref = "sqlDelight" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-ios = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+multiplatform-connectivity-status = { module = "com.github.ln-12:multiplatform-connectivity-status", version = "connectivity-status" }
 
 [plugins]
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

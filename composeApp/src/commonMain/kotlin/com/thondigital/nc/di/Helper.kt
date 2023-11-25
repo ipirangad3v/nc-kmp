@@ -7,6 +7,6 @@ import org.koin.core.context.startKoin
 fun initKoin() {
     // start Koin
     startKoin {
-        modules(appModule)
+        modules(presentationModule, useCasesModule, dataModule, networkModule)
     }.koin
 }

@@ -1,4 +1,4 @@
-package com.thondigital.nc.domain.models
+package com.thondigital.nc.domain.model
 
 import cafe.adriel.voyager.core.screen.Screen
 

@@ -51,10 +51,9 @@ kotlin {
             implementation(libs.android.firebase.analytics)
             implementation(libs.android.firebase.crashlytics)
 
-            //ktor
+            // ktor
             implementation(libs.ktor.client.android)
             implementation(libs.sqlDelight.android.driver)
-
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -75,12 +74,12 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.datetime)
 
-            //ktor
+            // ktor
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.serialization)
             implementation(libs.ktor.client.content.negotiation)
 
-            //sqlDelight
+            // sqlDelight
             implementation(libs.sqlDelight)
         }
     }

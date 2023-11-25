@@ -1,6 +1,6 @@
 package com.thondigital.nc.presentation.navigation
 
-import com.thondigital.nc.domain.models.ClickableMenuItem
+import com.thondigital.nc.domain.model.ClickableMenuItem
 import com.thondigital.nc.presentation.ui.calendar.CalendarScreen
 
 object NavigationHelper {

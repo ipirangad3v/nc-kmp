@@ -1,7 +1,10 @@
 package com.thondigital.nc
 
 import android.app.Application
-import com.thondigital.nc.di.appModule
+import com.thondigital.nc.di.dataModule
+import com.thondigital.nc.di.networkModule
+import com.thondigital.nc.di.presentationModule
+import com.thondigital.nc.di.useCasesModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -13,7 +16,7 @@ class NCApp : Application() {
         startKoin {
             androidLogger()
             androidContext(this@NCApp)
-            modules(appModule)
+            modules(presentationModule, dataModule, useCasesModule, networkModule)
         }
     }
 }
