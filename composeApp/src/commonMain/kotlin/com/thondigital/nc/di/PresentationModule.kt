@@ -7,6 +7,7 @@ import com.thondigital.nc.presentation.ui.event.EventDetailsScreenModel
 import com.thondigital.nc.presentation.ui.home.HomeScreenModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val presentationModule =
@@ -15,5 +16,5 @@ val presentationModule =
         factory { HomeScreenModel() }
         factory { CalendarScreenModel() }
         factory { EventDetailsScreenModel() }
-        factory { SignInScreenModel(SignInUseCase(get(), Dispatchers.IO)) }
+        factory { SignInScreenModel(SignInUseCase(get(), get(named("ioDispatcher")))) }
     }

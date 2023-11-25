@@ -5,6 +5,8 @@ import com.thondigital.nc.common.wrapper.DataResult
 import com.thondigital.nc.domain.repository.auth.AuthRepository
 import com.thondigital.nc.domain.validator.AuthValidator
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.withContext
 
 class SignInUseCase(
@@ -32,7 +34,8 @@ class SignInUseCase(
                 authRepository.storeTokens(result.data)
                 SignInResult(result = DataResult.Success(Unit))
             }
-            is DataResult.Error -> {
+
+            is DataResult.Error   -> {
                 SignInResult(result = DataResult.Error(result.exception))
             }
         }
