@@ -7,7 +7,7 @@ import com.thondigital.nc.network.model.response.TokensNetworkModel
 /**
  * Mapper class for convert [TokensNetworkModel] to [TokensDataModel] and vice versa
  */
-class TokensNetworkDataMapper() : Mapper<TokensNetworkModel, TokensDataModel> {
+class TokensNetworkDataMapper : Mapper<TokensNetworkModel, TokensDataModel> {
     override fun from(i: TokensNetworkModel): TokensDataModel {
         return TokensDataModel(
             accessToken = i.accessToken.orEmpty(),

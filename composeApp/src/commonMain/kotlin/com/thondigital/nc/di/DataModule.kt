@@ -1,5 +1,7 @@
 package com.thondigital.nc.di
 
+import com.thondigital.nc.data.mapper.AccountDataDomainMapper
+import com.thondigital.nc.data.mapper.TokensDataDomainMapper
 import com.thondigital.nc.data.repository.account.DefaultAccountRepository
 import com.thondigital.nc.data.repository.auth.DefaultAuthRepository
 import com.thondigital.nc.domain.repository.account.AccountRepository
@@ -12,14 +14,14 @@ val dataModule =
             DefaultAuthRepository(
                 get(),
                 get(),
-                get(),
+                TokensDataDomainMapper(),
             )
         }
         single<AccountRepository> {
             DefaultAccountRepository(
                 get(),
                 get(),
-                get(),
+                AccountDataDomainMapper(),
             )
         }
     }

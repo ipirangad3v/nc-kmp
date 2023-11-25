@@ -5,7 +5,7 @@ import cafe.adriel.voyager.core.model.screenModelScope
 import com.thondigital.nc.data.remote.responses.HomeResponse
 import kotlinx.coroutines.launch
 
-class HomeScreenModel() : StateScreenModel<HomeScreenModel.State>(State.Init) {
+class HomeScreenModel : StateScreenModel<HomeScreenModel.State>(State.Init) {
     sealed class State {
         data object Init : State()
 

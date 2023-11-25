@@ -8,6 +8,8 @@ import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.PullRefreshState
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -19,6 +21,7 @@ import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.thondigital.nc.data.remote.responses.HomeResponse
+import com.thondigital.nc.presentation.ui.auth.signin.SignInScreen
 import com.thondigital.nc.presentation.ui.components.EventsList
 import com.thondigital.nc.presentation.ui.components.Loading
 import com.thondigital.nc.presentation.ui.components.Menu
@@ -44,8 +47,8 @@ object HomeScreen : Screen {
 
         when (state) {
             is Loading -> Loading()
-            is Result -> HomeContent((state as Result).result, pullRefreshState, screenModel)
-            is Init -> screenModel.getHome()
+            is Result  -> HomeContent((state as Result).result, pullRefreshState, screenModel)
+            is Init    -> screenModel.getHome()
         }
     }
 
@@ -63,6 +66,13 @@ object HomeScreen : Screen {
             LazyColumn {
                 item {
                     TopBar()
+                }
+                item {
+                    LoginButton {
+                        navigator.push(
+                            SignInScreen
+                        )
+                    }
                 }
                 item {
                     if (result.events.isNotEmpty()) {
@@ -84,11 +94,19 @@ object HomeScreen : Screen {
                 state = pullRefreshState,
                 contentColor = primaryBlue,
                 modifier =
-                    Modifier.align(
-                        Alignment.TopCenter,
-                    ),
+                Modifier.align(
+                    Alignment.TopCenter,
+                ),
                 backgroundColor = Color.Transparent,
             )
         }
+    }
+
+    @Composable
+    private fun LoginButton(onClick: () -> Unit) {
+        Button(onClick = onClick) {
+            Text("Login")
+        }
+
     }
 }
