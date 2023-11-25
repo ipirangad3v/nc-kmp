@@ -22,7 +22,6 @@ import kotlinx.coroutines.launch
 class SignInScreenModel(
     private val signInUseCase: SignInUseCase,
 ) : ScreenModel {
-
     private val currentState: SignInContract.SignInViewState
         get() = viewState.value
 
@@ -39,10 +38,10 @@ class SignInScreenModel(
      */
     fun setEvent(event: SignInEvent) {
         when (event) {
-            is EmailChanged          -> setState { copy(email = event.email) }
-            is PasswordChanged       -> setState { copy(password = event.password) }
+            is EmailChanged -> setState { copy(email = event.email) }
+            is PasswordChanged -> setState { copy(password = event.password) }
             is SignUpTextViewClicked -> setEffect { NavigateToSignUp }
-            is SignInButtonClicked   -> onSignIn()
+            is SignInButtonClicked -> onSignIn()
         }
     }
 
@@ -66,40 +65,46 @@ class SignInScreenModel(
     private fun onSignIn() {
         val (email, password) = currentState
         job.cancel()
-        job = screenModelScope.launch {
-            setState { copy(loading = true) }
-            val signInResult = signInUseCase(email, password)
-            setState { copy(loading = false) }
+        job =
+            screenModelScope.launch {
+                setState { copy(loading = true) }
+                val signInResult = signInUseCase(email, password)
+                setState { copy(loading = false) }
 
-            setEmailErrorState(signInResult.emailError)
-            setPasswordErrorState(signInResult.passwordError)
+                setEmailErrorState(signInResult.emailError)
+                setPasswordErrorState(signInResult.passwordError)
 
-            when (signInResult.result) {
-                is DataResult.Success -> setEffect { NavigateToHome }
-                is DataResult.Error   -> setEffect {
-                    SignInContract.SignInViewEffect.ShowSnackBarError(
-                        signInResult.result.exception.message ?: ""
-                    )
+                when (signInResult.result) {
+                    is DataResult.Success -> setEffect { NavigateToHome }
+                    is DataResult.Error ->
+                        setEffect {
+                            SignInContract.SignInViewEffect.ShowSnackBarError(
+                                signInResult.result.exception.message ?: "",
+                            )
+                        }
+
+                    null -> return@launch
                 }
-
-                null                  -> return@launch
             }
-        }
     }
 
     private fun setEmailErrorState(emailError: AuthError?) {
         emailError?.let {
-            if (it == AuthError.EmptyField) setState { copy(emailError = "") }
-            else setState { copy(emailError = "") }
+            if (it == AuthError.EmptyField) {
+                setState { copy(emailError = "") }
+            } else {
+                setState { copy(emailError = "") }
+            }
         } ?: setState { copy(emailError = "") }
     }
 
     private fun setPasswordErrorState(passwordError: AuthError?) {
         passwordError?.let {
-            if (it == AuthError.EmptyField) setState { copy(passwordError = "") }
-            else setState { copy(passwordError = "") }
+            if (it == AuthError.EmptyField) {
+                setState { copy(passwordError = "") }
+            } else {
+                setState { copy(passwordError = "") }
+            }
         } ?: setState { copy(passwordError = "") }
-
     }
-
 }

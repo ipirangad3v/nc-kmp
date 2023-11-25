@@ -22,14 +22,17 @@ import kotlinx.serialization.json.Json
 
 @OptIn(InternalAPI::class)
 class AuthApiServiceImpl : AuthApiService {
-    private val httpClient = HttpClient {
-        install(ContentNegotiation) {
-            json(Json {
-                ignoreUnknownKeys = true
-                useAlternativeNames = false
-            })
+    private val httpClient =
+        HttpClient {
+            install(ContentNegotiation) {
+                json(
+                    Json {
+                        ignoreUnknownKeys = true
+                        useAlternativeNames = false
+                    },
+                )
+            }
         }
-    }
 
     override suspend fun signIn(signInRequest: SignInRequest): TokensNetworkModel {
         return httpClient.post("$BASE_ENDPOINT/$SIGNIN_ENDPOINT") {

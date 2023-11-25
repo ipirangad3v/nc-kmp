@@ -4,7 +4,6 @@ import com.thondigital.nc.data.connectivity.ConnectivityChecker
 import com.thondigital.nc.data.source.network.account.AccountNetworkDataSource
 import com.thondigital.nc.data.source.network.auth.AuthNetworkDataSource
 import com.thondigital.nc.data.source.preferences.PreferencesDataSource
-import com.thondigital.nc.network.apiservice.AccountApiService
 import com.thondigital.nc.network.apiservice.AuthApiService
 import com.thondigital.nc.network.apiservice.AuthApiServiceImpl
 import com.thondigital.nc.network.connectivity.DefaultConnectivityChecker
@@ -21,14 +20,15 @@ val networkModule =
         single<AuthNetworkDataSource> {
             DefaultAuthNetworkDataSource(
                 get(),
-                TokensNetworkDataMapper(), get()
+                TokensNetworkDataMapper(),
+                get(),
             )
         }
         single<AccountNetworkDataSource> {
             DefaultAccountNetworkDataSource(
                 get(),
                 AccountNetworkDataMapper(),
-                get()
+                get(),
             )
         }
         single<PreferencesDataSource> { PreferencesDataSourceImpl() }

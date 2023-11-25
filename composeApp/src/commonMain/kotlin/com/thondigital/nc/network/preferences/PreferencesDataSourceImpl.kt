@@ -5,7 +5,6 @@ import com.thondigital.nc.data.source.preferences.PreferencesDataSource
 
 class PreferencesDataSourceImpl : PreferencesDataSource {
     override fun storeTokens(tokens: TokensDataModel) {
-
     }
 
     override fun getAccessToken(): String {
@@ -18,5 +17,4 @@ class PreferencesDataSourceImpl : PreferencesDataSource {
 
     override fun deleteTokens() {
     }
-
 }

@@ -47,8 +47,8 @@ object HomeScreen : Screen {
 
         when (state) {
             is Loading -> Loading()
-            is Result  -> HomeContent((state as Result).result, pullRefreshState, screenModel)
-            is Init    -> screenModel.getHome()
+            is Result -> HomeContent((state as Result).result, pullRefreshState, screenModel)
+            is Init -> screenModel.getHome()
         }
     }
 
@@ -70,7 +70,7 @@ object HomeScreen : Screen {
                 item {
                     LoginButton {
                         navigator.push(
-                            SignInScreen
+                            SignInScreen,
                         )
                     }
                 }
@@ -94,9 +94,9 @@ object HomeScreen : Screen {
                 state = pullRefreshState,
                 contentColor = primaryBlue,
                 modifier =
-                Modifier.align(
-                    Alignment.TopCenter,
-                ),
+                    Modifier.align(
+                        Alignment.TopCenter,
+                    ),
                 backgroundColor = Color.Transparent,
             )
         }
@@ -107,6 +107,5 @@ object HomeScreen : Screen {
         Button(onClick = onClick) {
             Text("Login")
         }
-
     }
 }

@@ -25,7 +25,6 @@ object SignInScreen : Screen {
         val scope = rememberCoroutineScope()
         val snackbarHostState = remember { SnackbarHostState() }
 
-
         val navigator = LocalNavigator.currentOrThrow
         val screenModel = getScreenModel<SignInScreenModel>()
 
@@ -33,19 +32,21 @@ object SignInScreen : Screen {
         val viewEffect = screenModel.viewEffect.collectAsState(Init)
 
         when (viewEffect.value) {
-            is ShowSnackBarError -> scope.launch {
-                snackbarHostState.showSnackbar(
-                    (viewEffect.value as ShowSnackBarError).message,
-                    duration = SnackbarDuration.Short
+            is ShowSnackBarError ->
+                scope.launch {
+                    snackbarHostState.showSnackbar(
+                        (viewEffect.value as ShowSnackBarError).message,
+                        duration = SnackbarDuration.Short,
+                    )
+                }
+
+            is NavigateToSignUp ->
+                navigator.push(
+                    SignUpScreen(),
                 )
-            }
 
-            is NavigateToSignUp  -> navigator.push(
-                SignUpScreen()
-            )
-
-            is NavigateToHome    -> navigator.pop()
-            else                 -> Unit
+            is NavigateToHome -> navigator.pop()
+            else -> Unit
         }
 
         Button(onClick = {
