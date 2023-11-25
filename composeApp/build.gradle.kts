@@ -31,6 +31,11 @@ kotlin {
 
     sourceSets {
 
+        iosMain.dependencies {
+            implementation(libs.ktor.client.ios)
+            implementation(libs.sqlDelight.native.driver)
+        }
+
         androidMain.dependencies {
             implementation(libs.compose.ui)
             implementation(libs.compose.ui.tooling.preview)
@@ -44,6 +49,11 @@ kotlin {
             implementation(project.dependencies.platform(libs.android.firebase.bom))
             implementation(libs.android.firebase.analytics)
             implementation(libs.android.firebase.crashlytics)
+
+            //ktor
+            implementation(libs.ktor.client.android)
+            implementation(libs.sqlDelight.android.driver)
+
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -63,6 +73,14 @@ kotlin {
             implementation(libs.firebase.common)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.datetime)
+
+            //ktor
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.serialization)
+            implementation(libs.ktor.client.content.negotiation)
+
+            //sqlDelight
+            implementation(libs.sqlDelight)
         }
     }
 }
