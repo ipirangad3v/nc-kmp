@@ -1,4 +1,4 @@
-package com.zlagi.domain.validator
+package com.thondigital.nc.domain.validator
 
 import com.thondigital.nc.common.utils.AuthError
 

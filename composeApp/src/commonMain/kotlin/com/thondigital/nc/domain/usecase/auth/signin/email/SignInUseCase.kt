@@ -3,7 +3,7 @@ package com.thondigital.nc.domain.usecase.auth.signin.email
 import com.thondigital.nc.common.utils.result.SignInResult
 import com.thondigital.nc.common.wrapper.DataResult
 import com.thondigital.nc.domain.repository.auth.AuthRepository
-import com.zlagi.domain.validator.AuthValidator
+import com.thondigital.nc.domain.validator.AuthValidator
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 

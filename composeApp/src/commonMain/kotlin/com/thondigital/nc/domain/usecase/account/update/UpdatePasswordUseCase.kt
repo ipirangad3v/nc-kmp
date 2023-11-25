@@ -3,7 +3,7 @@ package com.thondigital.nc.domain.usecase.account.update
 import com.thondigital.nc.common.utils.result.UpdatePasswordResult
 import com.thondigital.nc.common.wrapper.DataResult
 import com.thondigital.nc.domain.repository.account.AccountRepository
-import com.zlagi.domain.validator.AuthValidator
+import com.thondigital.nc.domain.validator.AuthValidator
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 
