@@ -16,8 +16,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import cafe.adriel.voyager.core.annotation.ExperimentalVoyagerApi
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.koin.getNavigatorScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.thondigital.nc.data.remote.responses.HomeResponse
@@ -33,10 +34,11 @@ import com.thondigital.nc.presentation.ui.home.HomeScreenModel.State.Result
 import com.thondigital.nc.presentation.ui.theme.primaryBlue
 
 object HomeScreen : Screen {
-    @OptIn(ExperimentalMaterialApi::class)
+    @OptIn(ExperimentalMaterialApi::class, ExperimentalVoyagerApi::class)
     @Composable
     override fun Content() {
-        val screenModel = getScreenModel<HomeScreenModel>()
+        val navigator = LocalNavigator.currentOrThrow
+        val screenModel = navigator.getNavigatorScreenModel<HomeScreenModel>()
         val state by screenModel.state.collectAsState()
 
         val pullRefreshState =

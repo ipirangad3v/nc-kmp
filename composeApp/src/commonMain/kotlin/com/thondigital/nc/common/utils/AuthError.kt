@@ -1,5 +1,8 @@
 package com.thondigital.nc.common.utils
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 sealed class AuthError : Error() {
     object EmptyField : AuthError()
 

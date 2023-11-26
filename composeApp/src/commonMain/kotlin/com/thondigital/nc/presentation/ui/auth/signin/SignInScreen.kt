@@ -25,8 +25,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import cafe.adriel.voyager.core.annotation.ExperimentalVoyagerApi
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.koin.getNavigatorScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.thondigital.nc.presentation.ui.auth.signin.SignInContract.SignInViewEffect.Init
@@ -40,7 +41,7 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
 object SignInScreen : Screen {
-    @OptIn(ExperimentalResourceApi::class)
+    @OptIn(ExperimentalResourceApi::class, ExperimentalVoyagerApi::class)
     @Composable
     override fun Content() {
         val scope = rememberCoroutineScope()
@@ -48,7 +49,7 @@ object SignInScreen : Screen {
         val showPassword = remember { mutableStateOf(false) }
 
         val navigator = LocalNavigator.currentOrThrow
-        val screenModel = getScreenModel<SignInScreenModel>()
+        val screenModel = navigator.getNavigatorScreenModel<SignInScreenModel>()
 
         val viewState = screenModel.viewState.collectAsState()
         val viewEffect = screenModel.viewEffect.collectAsState(Init)

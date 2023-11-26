@@ -79,7 +79,7 @@ class SignInScreenModel(
                     is DataResult.Error ->
                         setEffect {
                             SignInContract.SignInViewEffect.ShowSnackBarError(
-                                signInResult.result.exception.message ?: "",
+                                signInResult.result.exception.message.toString(),
                             )
                         }
 
