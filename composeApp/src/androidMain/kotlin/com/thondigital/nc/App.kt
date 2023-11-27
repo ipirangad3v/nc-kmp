@@ -4,6 +4,7 @@ import android.app.Application
 import com.thondigital.nc.di.dataModule
 import com.thondigital.nc.di.dispatcherModule
 import com.thondigital.nc.di.networkModule
+import com.thondigital.nc.di.platformModule
 import com.thondigital.nc.di.presentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -16,7 +17,13 @@ class NCApp : Application() {
         startKoin {
             androidLogger()
             androidContext(this@NCApp)
-            modules(presentationModule, dataModule, dispatcherModule, networkModule)
+            modules(
+                platformModule(),
+                presentationModule,
+                dataModule,
+                dispatcherModule,
+                networkModule,
+            )
         }
     }
 }

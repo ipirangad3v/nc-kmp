@@ -1,0 +1,22 @@
+CREATE TABLE Preferences (
+    id INTEGER NOT NULL,
+    refresh_token TEXT,
+    access_token TEXT
+);
+
+insertTokens:
+INSERT INTO Preferences (id, refresh_token, access_token) VALUES (1, ?, ?);
+
+updateTokens:
+UPDATE Preferences SET refresh_token = ?, access_token = ? WHERE id = 1;
+
+getAccessToken:
+SELECT access_token FROM Preferences WHERE id = 1;
+
+getRefreshToken:
+SELECT refresh_token FROM Preferences WHERE id = 1;
+
+deleteTokens:
+DELETE FROM Preferences WHERE id = 1;
+
+

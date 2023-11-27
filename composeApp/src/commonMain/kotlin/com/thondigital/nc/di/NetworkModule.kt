@@ -31,7 +31,11 @@ val networkModule =
                 get(),
             )
         }
-        single<PreferencesDataSource> { PreferencesDataSourceImpl() }
+        single<PreferencesDataSource> {
+            PreferencesDataSourceImpl(
+                get(),
+            )
+        }
 
         single<AuthApiService> { AuthApiServiceImpl() }
     }

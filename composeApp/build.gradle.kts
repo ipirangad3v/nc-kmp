@@ -10,6 +10,13 @@ plugins {
     id("com.squareup.sqldelight").version("1.5.5")
 }
 
+sqldelight {
+    database("AppDatabase") {
+        packageName = "com.thondigital.nc"
+        sourceFolders = listOf("sqldelight")
+    }
+}
+
 kotlin {
     androidTarget {
         compilations.all {
@@ -53,6 +60,8 @@ kotlin {
 
             // ktor
             implementation(libs.ktor.client.android)
+
+            // sqlDelight
             implementation(libs.sqlDelight.android.driver)
         }
         commonMain.dependencies {
