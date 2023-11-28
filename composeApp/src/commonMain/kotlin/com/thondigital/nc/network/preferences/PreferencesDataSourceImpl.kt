@@ -13,6 +13,7 @@ class PreferencesDataSourceImpl(
 
     override fun storeTokens(tokens: TokensDataModel) {
         dbQuery.transaction {
+            deleteTokens()
             dbQuery.insertTokens(
                 tokens.accessToken,
                 tokens.refreshToken,

@@ -40,7 +40,7 @@ import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
-object SignInScreen : Screen {
+class SignInScreen : Screen {
     @OptIn(ExperimentalResourceApi::class, ExperimentalVoyagerApi::class)
     @Composable
     override fun Content() {

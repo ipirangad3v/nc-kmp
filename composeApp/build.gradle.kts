@@ -7,13 +7,14 @@ plugins {
     alias(libs.plugins.googleServices)
     alias(libs.plugins.firebaseCrashlytics)
     kotlin("plugin.serialization").version("1.9.20")
-    id("com.squareup.sqldelight").version("1.5.5")
+    id("app.cash.sqldelight").version("2.0.0")
 }
 
 sqldelight {
-    database("AppDatabase") {
-        packageName = "com.thondigital.nc"
-        sourceFolders = listOf("sqldelight")
+    databases {
+        create("AppDatabase") {
+            packageName = "com.thondigital.nc"
+        }
     }
 }
 

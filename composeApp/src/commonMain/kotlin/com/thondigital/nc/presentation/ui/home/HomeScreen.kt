@@ -72,7 +72,7 @@ object HomeScreen : Screen {
                 item {
                     LoginButton {
                         navigator.push(
-                            SignInScreen,
+                            SignInScreen(),
                         )
                     }
                 }
