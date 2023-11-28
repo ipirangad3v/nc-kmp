@@ -21,9 +21,22 @@ class PreferencesDataSourceImpl(
         }
     }
 
-    override fun getAccessToken(): String = dbQuery.getAccessToken().executeAsOne().access_token ?: ""
+    override fun getAccessToken(): String {
+        return try {
+            dbQuery.getAccessToken().executeAsOne().access_token ?: ""
+        } catch (e: Exception) {
+            ""
+        }
 
-    override fun getRefreshToken(): String = dbQuery.getRefreshToken().executeAsOne().refresh_token ?: ""
+    }
+
+    override fun getRefreshToken(): String {
+        return try {
+            dbQuery.getRefreshToken().executeAsOne().refresh_token ?: ""
+        } catch (e: Exception) {
+            ""
+        }
+    }
 
     override fun deleteTokens() {
         dbQuery.deleteTokens()

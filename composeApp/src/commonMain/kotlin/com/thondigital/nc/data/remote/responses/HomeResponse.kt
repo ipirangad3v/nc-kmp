@@ -5,4 +5,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class HomeResponse(
     val events: List<EventDetailsResponse>,
+    val isUserAuthenticated: Boolean = false,
 )

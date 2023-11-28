@@ -11,6 +11,7 @@ import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -18,6 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import cafe.adriel.voyager.core.annotation.ExperimentalVoyagerApi
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.core.screen.ScreenKey
+import cafe.adriel.voyager.core.screen.uniqueScreenKey
 import cafe.adriel.voyager.koin.getNavigatorScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
@@ -33,13 +36,21 @@ import com.thondigital.nc.presentation.ui.home.HomeScreenModel.State.Loading
 import com.thondigital.nc.presentation.ui.home.HomeScreenModel.State.Result
 import com.thondigital.nc.presentation.ui.theme.primaryBlue
 
-object HomeScreen : Screen {
+class HomeScreen : Screen {
+
+    override val key: ScreenKey
+        get() = uniqueScreenKey
+
     @OptIn(ExperimentalMaterialApi::class, ExperimentalVoyagerApi::class)
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
         val screenModel = navigator.getNavigatorScreenModel<HomeScreenModel>()
         val state by screenModel.state.collectAsState()
+
+        LaunchedEffect(screenModel) {
+            screenModel.getHome()
+        }
 
         val pullRefreshState =
             rememberPullRefreshState(
@@ -49,8 +60,8 @@ object HomeScreen : Screen {
 
         when (state) {
             is Loading -> Loading()
-            is Result -> HomeContent((state as Result).result, pullRefreshState, screenModel)
-            is Init -> screenModel.getHome()
+            is Result  -> HomeContent((state as Result).result, pullRefreshState, screenModel)
+            is Init    -> screenModel.getHome()
         }
     }
 
@@ -69,11 +80,19 @@ object HomeScreen : Screen {
                 item {
                     TopBar()
                 }
-                item {
-                    LoginButton {
-                        navigator.push(
-                            SignInScreen(),
-                        )
+                if (result.isUserAuthenticated) {
+                    item {
+                        Text("Welcome")
+                    }
+
+                } else {
+                    item {
+                        LoginButton {
+                            navigator.push(
+                                SignInScreen(),
+                            )
+                        }
+
                     }
                 }
                 item {
@@ -96,9 +115,9 @@ object HomeScreen : Screen {
                 state = pullRefreshState,
                 contentColor = primaryBlue,
                 modifier =
-                    Modifier.align(
-                        Alignment.TopCenter,
-                    ),
+                Modifier.align(
+                    Alignment.TopCenter,
+                ),
                 backgroundColor = Color.Transparent,
             )
         }

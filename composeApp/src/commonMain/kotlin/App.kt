@@ -13,7 +13,7 @@ fun App(
         darkTheme = darkTheme,
         dynamicColor = dynamicColor,
     ) {
-        Navigator(HomeScreen) { navigator ->
+        Navigator(HomeScreen()) { navigator ->
             SlideTransition(navigator)
         }
     }
