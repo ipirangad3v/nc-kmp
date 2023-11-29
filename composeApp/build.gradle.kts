@@ -39,12 +39,11 @@ kotlin {
     }
 
     configure(targets) {
-        if (this is org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget && konanTarget.family.isAppleFamily)
-            {
-                compilations.getByName("main").cinterops.create("kvo") {
-                    packageName("com.thondigital.nc")
-                }
+        if (this is org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget && konanTarget.family.isAppleFamily) {
+            compilations.getByName("main").cinterops.create("kvo") {
+                packageName("com.thondigital.nc")
             }
+        }
     }
 
     sourceSets {
