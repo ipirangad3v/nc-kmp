@@ -64,6 +64,11 @@ kotlin {
 
             // sqlDelight
             implementation(libs.sqlDelight.android.driver)
+
+            // exoplayer
+            implementation(libs.exoplayer)
+            implementation(libs.exoplayer.ui)
+            implementation(libs.exoplayer.dash)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -86,6 +91,7 @@ kotlin {
 
             // ktor
             implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.cio)
             implementation(libs.ktor.client.serialization)
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.logging)
@@ -135,4 +141,7 @@ android {
         debugImplementation(libs.compose.ui.tooling)
         implementation(libs.firebase.common)
     }
+}
+dependencies {
+    implementation(libs.androidx.work.runtime.ktx)
 }

@@ -7,6 +7,13 @@ import org.koin.core.context.startKoin
 fun initKoin() {
     // start Koin
     startKoin {
-        modules(platformModule(), presentationModule, dataModule, networkModule, dispatcherModule)
+        modules(
+            platformModule(),
+            presentationModule,
+            dataModule,
+            networkModule,
+            dispatcherModule,
+            streamingModule(),
+        )
     }.koin
 }

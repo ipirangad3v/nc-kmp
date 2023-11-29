@@ -1,4 +1,4 @@
-package com.thondigital.nc.network.preferences
+package com.thondigital.nc.network.source
 
 import com.thondigital.nc.AppDatabase
 import com.thondigital.nc.data.model.TokensDataModel
@@ -27,7 +27,6 @@ class PreferencesDataSourceImpl(
         } catch (e: Exception) {
             ""
         }
-
     }
 
     override fun getRefreshToken(): String {

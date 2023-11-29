@@ -8,12 +8,11 @@ object NetworkConstants {
     const val REVOKE_TOKEN_ENDPOINT = "auth/token/revoke"
     const val ACCOUNT_ENDPOINT = "auth/account"
     const val PASSWORD_ENDPOINT = "auth/account/password"
+    const val RBN_STREAMING =
+        "https://euroticast5.euroti.com.br/stream.php?porta=8006&1701226225506"
 }
 
 object NetworkParameters {
     const val TOKEN_TYPE = "Bearer "
     const val AUTH_HEADER = "Authorization"
-    const val CUSTOM_HEADER = "@"
-    const val NO_AUTH = "NoAuth"
-    const val SEARCH_QUERY = "search_query"
 }

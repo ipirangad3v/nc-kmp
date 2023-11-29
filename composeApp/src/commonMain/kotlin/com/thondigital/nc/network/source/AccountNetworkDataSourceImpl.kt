@@ -9,7 +9,7 @@ import com.thondigital.nc.network.apiservice.AccountApiService
 import com.thondigital.nc.network.mapper.AccountNetworkDataMapper
 import com.thondigital.nc.network.model.request.PasswordRequest
 
-class DefaultAccountNetworkDataSource(
+class AccountNetworkDataSourceImpl(
     private val accountApiService: AccountApiService,
     private val accountNetworkDataMapper: AccountNetworkDataMapper,
     private val connectivityChecker: ConnectivityChecker,

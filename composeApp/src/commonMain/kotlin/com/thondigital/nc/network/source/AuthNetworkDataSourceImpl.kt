@@ -11,7 +11,7 @@ import com.thondigital.nc.network.model.request.SignInRequest
 import com.thondigital.nc.network.model.request.SignUpRequest
 import com.thondigital.nc.network.model.request.UpdateTokenRequest
 
-class DefaultAuthNetworkDataSource(
+class AuthNetworkDataSourceImpl(
     private val authApiService: AuthApiService,
     private val tokensNetworkDataMapper: TokensNetworkDataMapper,
     private val connectivityChecker: ConnectivityChecker,
