@@ -13,7 +13,6 @@ fun initKoin() {
             dataModule,
             networkModule,
             dispatcherModule,
-            streamingModule(),
         )
     }.koin
 }

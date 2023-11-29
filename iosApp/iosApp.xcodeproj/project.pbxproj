@@ -15,6 +15,8 @@
 		96F7B54F2B0F02AC008DD033 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 96F7B5312B0F0234008DD033 /* FirebaseFirestore */; };
 		96F7B55F2B0F55B1008DD033 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 96F7B55E2B0F55B1008DD033 /* FirebaseCrashlytics */; };
 		96F7B5622B0F59F0008DD033 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 96F7B5612B0F59F0008DD033 /* FirebaseAnalytics */; };
+		96F7B5652B170AC4008DD033 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F7B5642B170AC4008DD033 /* Constants.swift */; };
+		96F7B5672B170B32008DD033 /* RadioStreamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F7B5662B170B32008DD033 /* RadioStreamer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96F7B5402B0F0261008DD033 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		96F7B5642B170AC4008DD033 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		96F7B5662B170B32008DD033 /* RadioStreamer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStreamer.swift; sourceTree = "<group>"; };
 		AB3632DC29227652001CCB65 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		F8D08280B395FE69C470AB2D /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -86,6 +90,8 @@
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
+				96F7B5642B170AC4008DD033 /* Constants.swift */,
+				96F7B5662B170B32008DD033 /* RadioStreamer.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -223,8 +229,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96F7B5672B170B32008DD033 /* RadioStreamer.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				96F7B5652B170AC4008DD033 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

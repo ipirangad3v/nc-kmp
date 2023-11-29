@@ -1,6 +1,6 @@
 package com.thondigital.nc.network.apiservice
 
-import com.thondigital.nc.network.model.NetworkConstants.RBN_STREAMING
+import com.thondigital.nc.network.model.NetworkConstants.RBN_STREAMING_ENDPOINT
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.logging.LogLevel
@@ -20,7 +20,7 @@ class StreamingApiServiceImpl : StreamingApiService {
     @OptIn(InternalAPI::class)
     private val streamingFlow =
         flow {
-            client.prepareGet(RBN_STREAMING) {
+            client.prepareGet(RBN_STREAMING_ENDPOINT) {
                 contentType(
                     io.ktor.http.ContentType.parse("audio/mpeg"),
                 )

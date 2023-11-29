@@ -10,7 +10,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 actual fun VideoPlayer(
     modifier: Modifier,
     url: String,
-)  {
+) {
     AndroidView(
         modifier = modifier,
         factory = { context ->

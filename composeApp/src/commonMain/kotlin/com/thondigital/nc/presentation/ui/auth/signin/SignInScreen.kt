@@ -36,6 +36,7 @@ import com.thondigital.nc.presentation.ui.auth.signin.SignInContract.SignInViewE
 import com.thondigital.nc.presentation.ui.auth.signin.SignInContract.SignInViewEffect.ShowSnackBarError
 import com.thondigital.nc.presentation.ui.auth.signup.SignUpScreen
 import com.thondigital.nc.presentation.ui.components.Loading
+import com.thondigital.nc.presentation.ui.components.TopBar
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
@@ -73,12 +74,13 @@ class SignInScreen : Screen {
         }
         Column(
             Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
+            verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = CenterHorizontally,
         ) {
             if (viewState.value.loading) {
                 Loading()
             } else {
+                TopBar(true) { navigator.pop() }
                 Image(
                     modifier =
                         Modifier
