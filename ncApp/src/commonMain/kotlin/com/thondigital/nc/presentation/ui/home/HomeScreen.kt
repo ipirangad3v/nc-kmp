@@ -99,7 +99,7 @@ class HomeScreen(
                     item {
                         LoginButton {
                             navigator.push(
-                                SignInScreen()
+                                SignInScreen
                             )
                         }
                     }

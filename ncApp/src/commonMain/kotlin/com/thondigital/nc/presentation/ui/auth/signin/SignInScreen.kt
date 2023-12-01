@@ -42,7 +42,7 @@ import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
-class SignInScreen : Screen {
+object SignInScreen : Screen {
     @OptIn(ExperimentalResourceApi::class, ExperimentalVoyagerApi::class)
     @Composable
     override fun Content() {
@@ -89,9 +89,9 @@ class SignInScreen : Screen {
                 ) {
                     Image(
                         modifier =
-                            Modifier
-                                .width(200.dp)
-                                .height(200.dp),
+                        Modifier
+                            .width(200.dp)
+                            .height(200.dp),
                         painter = painterResource("images/logonegativa.png"),
                         contentDescription = "logo"
                     )
@@ -124,24 +124,24 @@ class SignInScreen : Screen {
                         rightIcon = {
                             Image(
                                 modifier =
-                                    Modifier
-                                        .width(30.dp)
-                                        .height(30.dp).clickable {
-                                            showPassword.value = !showPassword.value
-                                        },
+                                Modifier
+                                    .width(30.dp)
+                                    .height(30.dp).clickable {
+                                        showPassword.value = !showPassword.value
+                                    },
                                 painter =
-                                    painterResource(
-                                        if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
-                                    ),
+                                painterResource(
+                                    if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
+                                ),
                                 contentDescription = "logo"
                             )
                         },
                         visualTransformation =
-                            if (showPassword.value) {
-                                VisualTransformation.None
-                            } else {
-                                PasswordVisualTransformation()
-                            }
+                        if (showPassword.value) {
+                            VisualTransformation.None
+                        } else {
+                            PasswordVisualTransformation()
+                        }
                     )
                     Button(
                         onClick = { screenModel.setEvent(SignInContract.SignInEvent.SignInButtonClicked) },
@@ -153,11 +153,11 @@ class SignInScreen : Screen {
                     Text(
                         "Novo usuário? Clique aqui para se cadastrar",
                         modifier =
-                            Modifier.clickable {
-                                screenModel.setEvent(
-                                    SignInContract.SignInEvent.SignUpTextViewClicked
-                                )
-                            }
+                        Modifier.clickable {
+                            screenModel.setEvent(
+                                SignInContract.SignInEvent.SignUpTextViewClicked
+                            )
+                        }
                     )
                 }
             }

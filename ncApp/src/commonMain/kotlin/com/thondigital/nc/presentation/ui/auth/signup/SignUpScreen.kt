@@ -31,6 +31,7 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.thondigital.nc.presentation.ui.auth.signin.SignInContract.SignInViewEffect.Init
 import com.thondigital.nc.presentation.ui.auth.signin.SignInContract.SignInViewEffect.NavigateToHome
 import com.thondigital.nc.presentation.ui.auth.signin.SignInContract.SignInViewEffect.ShowSnackBarError
+import com.thondigital.nc.presentation.ui.auth.signin.SignInScreen
 import com.thondigital.nc.presentation.ui.components.EditTextWithErrorMessage
 import com.thondigital.nc.presentation.ui.components.Loading
 import com.thondigital.nc.presentation.ui.components.TopBar
@@ -61,7 +62,7 @@ object SignUpScreen : Screen {
                     )
                 }
 
-            is NavigateToHome -> navigator.pop()
+            is NavigateToHome -> navigator.push(SignInScreen)
             else -> Unit
         }
         Column(
@@ -80,9 +81,9 @@ object SignUpScreen : Screen {
                 ) {
                     Image(
                         modifier =
-                            Modifier
-                                .width(200.dp)
-                                .height(200.dp),
+                        Modifier
+                            .width(200.dp)
+                            .height(200.dp),
                         painter = painterResource("images/logonegativa.png"),
                         contentDescription = "logo"
                     )
@@ -119,24 +120,24 @@ object SignUpScreen : Screen {
                         rightIcon = {
                             Image(
                                 modifier =
-                                    Modifier
-                                        .width(30.dp)
-                                        .height(30.dp).clickable {
-                                            showPassword.value = !showPassword.value
-                                        },
+                                Modifier
+                                    .width(30.dp)
+                                    .height(30.dp).clickable {
+                                        showPassword.value = !showPassword.value
+                                    },
                                 painter =
-                                    painterResource(
-                                        if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
-                                    ),
+                                painterResource(
+                                    if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
+                                ),
                                 contentDescription = "logo"
                             )
                         },
                         visualTransformation =
-                            if (showPassword.value) {
-                                VisualTransformation.None
-                            } else {
-                                PasswordVisualTransformation()
-                            }
+                        if (showPassword.value) {
+                            VisualTransformation.None
+                        } else {
+                            PasswordVisualTransformation()
+                        }
                     ) {
                         screenModel.setEvent(
                             SignUpContract.SignUpEvent.PasswordChanged(
@@ -152,24 +153,24 @@ object SignUpScreen : Screen {
                         rightIcon = {
                             Image(
                                 modifier =
-                                    Modifier
-                                        .width(30.dp)
-                                        .height(30.dp).clickable {
-                                            showPassword.value = !showPassword.value
-                                        },
+                                Modifier
+                                    .width(30.dp)
+                                    .height(30.dp).clickable {
+                                        showPassword.value = !showPassword.value
+                                    },
                                 painter =
-                                    painterResource(
-                                        if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
-                                    ),
+                                painterResource(
+                                    if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
+                                ),
                                 contentDescription = "logo"
                             )
                         },
                         visualTransformation =
-                            if (showPassword.value) {
-                                VisualTransformation.None
-                            } else {
-                                PasswordVisualTransformation()
-                            }
+                        if (showPassword.value) {
+                            VisualTransformation.None
+                        } else {
+                            PasswordVisualTransformation()
+                        }
                     ) {
                         screenModel.setEvent(
                             SignUpContract.SignUpEvent.ConfirmPasswordChanged(
