@@ -1,0 +1,12 @@
+#!/bin/sh
+
+##### KOTLINTER HOOK START #####
+##### KOTLINTER 3.14.0 #####
+ROOT_FOLDER=$(git rev-parse --show-toplevel)
+GRADLEW=$ROOT_FOLDER/gradlew
+if ! $GRADLEW build-logic:lintKotlin build-logic:lintBuildscripts lintKotlin lintBuildscripts ; then
+    echo 1>&2 "\nlintKotlin found problems, running formatKotlin; commit the result"
+    $GRADLEW build-logic:formatKotlin build-logic:formatBuildscripts formatKotlin formatBuildscripts
+    exit 1
+fi
+##### KOTLINTER HOOK END #####

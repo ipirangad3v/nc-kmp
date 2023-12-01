@@ -1,5 +1,5 @@
 import SwiftUI
-import ComposeApp
+import NcApp
 import Firebase
 
 @main
