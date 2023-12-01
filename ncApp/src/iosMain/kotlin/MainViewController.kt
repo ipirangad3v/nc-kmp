@@ -2,7 +2,6 @@ import androidx.compose.ui.window.ComposeUIViewController
 import platform.UIKit.UIScreen
 import platform.UIKit.UIUserInterfaceStyle
 
-// ktlint-disable standard:function-naming
 @Suppress("unused")
 fun MainViewController() =
     ComposeUIViewController {
@@ -14,4 +13,3 @@ fun MainViewController() =
             dynamicColor = false
         )
     }
-// ktlint-enable standard:function-naming

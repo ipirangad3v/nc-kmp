@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.thondigital.nc.presentation.ui.theme.primaryBlue
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
@@ -22,6 +23,7 @@ import org.jetbrains.compose.resources.painterResource
 @Composable
 fun TopBar(
     showBackButton: Boolean = false,
+    showLogo: Boolean = true,
     onBackClick: () -> Unit = {}
 ) {
     Box(
@@ -40,6 +42,7 @@ fun TopBar(
             ) {
                 Text(
                     text = "Voltar",
+                    fontSize = 16.sp,
                     modifier = Modifier.clickable { onBackClick() }
                 )
             }
@@ -49,16 +52,18 @@ fun TopBar(
             verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
-            Image(
-                modifier =
-                    Modifier
-                        .width(50.dp)
-                        .height(50.dp),
-                painter = painterResource("images/logonegativa.png"),
-                contentDescription = "logo"
-            )
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(text = "Nação da Cruz", color = primaryBlue)
+            if (showLogo) {
+                Image(
+                    modifier =
+                        Modifier
+                            .width(50.dp)
+                            .height(50.dp),
+                    painter = painterResource("images/logonegativa.png"),
+                    contentDescription = "logo"
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(text = "Nação da Cruz", color = primaryBlue)
+            }
         }
     }
 }
