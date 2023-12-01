@@ -3,8 +3,8 @@ package com.thondigital.nc.domain.validator
 import com.thondigital.nc.common.utils.AuthError
 
 object AuthValidator {
-    private const val usernameLength = 3
-    private const val passwordLength = 7
+    private const val USERNAME_LENGTH = 3
+    private const val PASSWORD_LENGTH = 7
 
     fun emailError(email: String): AuthError? {
         return when {
@@ -17,7 +17,7 @@ object AuthValidator {
     fun usernameError(username: String): AuthError? {
         return when {
             username.isEmpty() -> AuthError.EmptyField
-            username.count() < usernameLength -> AuthError.InputTooShort
+            username.count() < USERNAME_LENGTH -> AuthError.InputTooShort
             !username.isAlphaNumeric() -> AuthError.InvalidUsername
             else -> null
         }
@@ -50,7 +50,7 @@ object AuthValidator {
 
     private fun String.isAlphaNumeric() = matches("[a-zA-Z0-9]+".toRegex())
 
-    private fun isValidPassword(password: String): Boolean = password.count() > passwordLength
+    private fun isValidPassword(password: String): Boolean = password.count() > PASSWORD_LENGTH
 
     private fun passwordMatches(
         newPassword: String,

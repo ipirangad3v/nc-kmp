@@ -2,17 +2,33 @@ package com.thondigital.nc.audioplayer
 
 import com.thondigital.nc.ObserverProtocol
 import com.thondigital.nc.network.model.NetworkConstants.RBN_STREAMING_ENDPOINT
-import kotlinx.cinterop.*
+import kotlinx.cinterop.COpaquePointer
+import kotlinx.cinterop.CValue
+import kotlinx.cinterop.ExperimentalForeignApi
 import platform.AVFAudio.AVAudioSession
 import platform.AVFAudio.AVAudioSessionCategoryPlayback
 import platform.AVFAudio.setActive
-import platform.AVFoundation.*
+import platform.AVFoundation.AVPlayer
+import platform.AVFoundation.AVPlayerItem
+import platform.AVFoundation.AVPlayerItemDidPlayToEndTimeNotification
+import platform.AVFoundation.AVPlayerTimeControlStatusPlaying
+import platform.AVFoundation.addPeriodicTimeObserverForInterval
+import platform.AVFoundation.currentItem
+import platform.AVFoundation.pause
+import platform.AVFoundation.play
+import platform.AVFoundation.removeTimeObserver
+import platform.AVFoundation.replaceCurrentItemWithPlayerItem
+import platform.AVFoundation.seekToTime
+import platform.AVFoundation.timeControlStatus
 import platform.CoreMedia.CMTime
 import platform.CoreMedia.CMTimeMakeWithSeconds
-import platform.Foundation.*
+import platform.Foundation.NSNotificationCenter
+import platform.Foundation.NSOperationQueue
+import platform.Foundation.NSURL
 import platform.darwin.NSEC_PER_SEC
 import platform.darwin.NSObject
 
+@OptIn(ExperimentalForeignApi::class)
 actual class AudioPlayer actual constructor(private val playerState: PlayerState) {
     private val avAudioPlayer: AVPlayer =
         AVPlayer().apply {
@@ -23,7 +39,6 @@ actual class AudioPlayer actual constructor(private val playerState: PlayerState
         }
     private lateinit var timeObserver: Any
 
-    @OptIn(ExperimentalForeignApi::class)
     private val observer: (CValue<CMTime>) -> Unit = {
         playerState.isPlaying = avAudioPlayer.timeControlStatus == AVPlayerTimeControlStatusPlaying
     }
@@ -43,7 +58,6 @@ actual class AudioPlayer actual constructor(private val playerState: PlayerState
         playerState.isPlaying = false
     }
 
-    @OptIn(ExperimentalForeignApi::class)
     private fun setUpAudioSession() {
         try {
             val audioSession = AVAudioSession.sharedInstance()
@@ -54,7 +68,6 @@ actual class AudioPlayer actual constructor(private val playerState: PlayerState
         }
     }
 
-    @OptIn(ExperimentalForeignApi::class)
     private fun startTimeObserver() {
         val interval = CMTimeMakeWithSeconds(1.0, NSEC_PER_SEC.toInt())
         timeObserver = avAudioPlayer.addPeriodicTimeObserverForInterval(interval, null, observer)
@@ -67,7 +80,6 @@ actual class AudioPlayer actual constructor(private val playerState: PlayerState
         )
     }
 
-    @OptIn(ExperimentalForeignApi::class)
     private fun stop() {
         if (::timeObserver.isInitialized) avAudioPlayer.removeTimeObserver(timeObserver)
         avAudioPlayer.pause()
@@ -81,7 +93,7 @@ actual class AudioPlayer actual constructor(private val playerState: PlayerState
 
 @OptIn(ExperimentalForeignApi::class)
 class AudioObserver : ObserverProtocol, NSObject() {
-    @OptIn(ExperimentalForeignApi::class)
+    @ExperimentalForeignApi
     override fun observeValueForKeyPath(
         keyPath: String?,
         ofObject: Any?,

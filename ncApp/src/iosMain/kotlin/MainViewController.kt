@@ -3,6 +3,7 @@ import platform.UIKit.UIScreen
 import platform.UIKit.UIUserInterfaceStyle
 
 @Suppress("unused")
+// ktlint-disable standard:function-naming
 fun MainViewController() =
     ComposeUIViewController {
         val isDarkTheme =
@@ -13,3 +14,4 @@ fun MainViewController() =
             dynamicColor = false
         )
     }
+// ktlint-enable standard:function-naming

@@ -128,7 +128,14 @@ class SignInScreen : Screen {
                             contentDescription = "logo"
                         )
                     },
-                    visualTransformation = if (showPassword.value) VisualTransformation.None else PasswordVisualTransformation(),
+                    visualTransformation =
+                        if (
+                            showPassword.value
+                        ) {
+                            VisualTransformation.None
+                        } else {
+                            PasswordVisualTransformation()
+                        },
                     singleLine = true,
                     isError = viewState.value.passwordError.isNotBlank(),
                     value = viewState.value.password,
