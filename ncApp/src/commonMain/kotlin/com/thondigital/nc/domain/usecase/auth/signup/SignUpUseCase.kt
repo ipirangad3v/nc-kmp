@@ -38,9 +38,14 @@ class SignUpUseCase(
                 }
         ) {
             is DataResult.Success -> {
-                authRepository.storeTokens(result.data)
-                SignUpResult(result = DataResult.Success(Unit))
+                if (result.data.refreshToken.isNotBlank() && result.data.accessToken.isNotBlank()) {
+                    authRepository.storeTokens(result.data)
+                    SignUpResult(result = DataResult.Success(Unit))
+                } else {
+                    SignUpResult(result = DataResult.Error(Exception("Ocorreu um erro inesperado, tente novamente.")))
+                }
             }
+
             is DataResult.Error -> {
                 SignUpResult(result = DataResult.Error(result.exception))
             }

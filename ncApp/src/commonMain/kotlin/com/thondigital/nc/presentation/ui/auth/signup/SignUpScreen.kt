@@ -8,9 +8,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material3.Button
 import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -65,126 +67,133 @@ object SignUpScreen : Screen {
             is NavigateToHome -> navigator.push(SignInScreen)
             else -> Unit
         }
-        Column(
-            Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = CenterHorizontally
-        ) {
-            if (viewState.value.loading) {
-                Loading()
-            } else {
+        Scaffold(
+            snackbarHost = { SnackbarHost(snackbarHostState) },
+            topBar = {
                 TopBar(showBackButton = true, showLogo = false) { navigator.pop() }
-                Column(
-                    modifier = Modifier.fillMaxSize(),
-                    horizontalAlignment = CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    Image(
-                        modifier =
+            },
+            backgroundColor = androidx.compose.ui.graphics.Color.White
+        ) {
+            Column(
+                Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.SpaceBetween,
+                horizontalAlignment = CenterHorizontally
+            ) {
+                if (viewState.value.loading) {
+                    Loading()
+                } else {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalAlignment = CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        Image(
+                            modifier =
                             Modifier
                                 .width(200.dp)
                                 .height(200.dp),
-                        painter = painterResource("images/logonegativa.png"),
-                        contentDescription = "logo"
-                    )
-                    Spacer(modifier = Modifier.height(20.dp))
-                    EditTextWithErrorMessage(
-                        error = viewState.value.emailError,
-                        label = "Email",
-                        value = viewState.value.email,
-                        keyboardType = KeyboardType.Email
-                    ) {
-                        screenModel.setEvent(
-                            SignUpContract.SignUpEvent.EmailChanged(
-                                it
-                            )
+                            painter = painterResource("images/logonegativa.png"),
+                            contentDescription = "logo"
                         )
-                    }
-                    EditTextWithErrorMessage(
-                        error = viewState.value.usernameError,
-                        label = "Nome de usuário",
-                        value = viewState.value.username,
-                        keyboardType = KeyboardType.Text
-                    ) {
-                        screenModel.setEvent(
-                            SignUpContract.SignUpEvent.UsernameChanged(
-                                it
+                        Spacer(modifier = Modifier.height(20.dp))
+                        EditTextWithErrorMessage(
+                            error = viewState.value.emailError,
+                            label = "Email",
+                            value = viewState.value.email,
+                            keyboardType = KeyboardType.Email
+                        ) {
+                            screenModel.setEvent(
+                                SignUpContract.SignUpEvent.EmailChanged(
+                                    it
+                                )
                             )
-                        )
-                    }
-                    EditTextWithErrorMessage(
-                        error = viewState.value.passwordError,
-                        label = "Senha",
-                        value = viewState.value.password,
-                        keyboardType = KeyboardType.Password,
-                        rightIcon = {
-                            Image(
-                                modifier =
+                        }
+                        EditTextWithErrorMessage(
+                            error = viewState.value.usernameError,
+                            label = "Nome de usuário",
+                            value = viewState.value.username,
+                            keyboardType = KeyboardType.Text
+                        ) {
+                            screenModel.setEvent(
+                                SignUpContract.SignUpEvent.UsernameChanged(
+                                    it
+                                )
+                            )
+                        }
+                        EditTextWithErrorMessage(
+                            error = viewState.value.passwordError,
+                            label = "Senha",
+                            value = viewState.value.password,
+                            keyboardType = KeyboardType.Password,
+                            rightIcon = {
+                                Image(
+                                    modifier =
                                     Modifier
                                         .width(30.dp)
                                         .height(30.dp).clickable {
                                             showPassword.value = !showPassword.value
                                         },
-                                painter =
+                                    painter =
                                     painterResource(
                                         if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
                                     ),
-                                contentDescription = "logo"
-                            )
-                        },
-                        visualTransformation =
+                                    contentDescription = "logo"
+                                )
+                            },
+                            visualTransformation =
                             if (showPassword.value) {
                                 VisualTransformation.None
                             } else {
                                 PasswordVisualTransformation()
                             }
-                    ) {
-                        screenModel.setEvent(
-                            SignUpContract.SignUpEvent.PasswordChanged(
-                                it
+                        ) {
+                            screenModel.setEvent(
+                                SignUpContract.SignUpEvent.PasswordChanged(
+                                    it
+                                )
                             )
-                        )
-                    }
-                    EditTextWithErrorMessage(
-                        error = viewState.value.confirmPasswordError,
-                        value = viewState.value.confirmPassword,
-                        label = "Confirmar senha",
-                        keyboardType = KeyboardType.Password,
-                        rightIcon = {
-                            Image(
-                                modifier =
+                        }
+                        EditTextWithErrorMessage(
+                            error = viewState.value.confirmPasswordError,
+                            value = viewState.value.confirmPassword,
+                            label = "Confirmar senha",
+                            keyboardType = KeyboardType.Password,
+                            rightIcon = {
+                                Image(
+                                    modifier =
                                     Modifier
                                         .width(30.dp)
                                         .height(30.dp).clickable {
                                             showPassword.value = !showPassword.value
                                         },
-                                painter =
+                                    painter =
                                     painterResource(
                                         if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
                                     ),
-                                contentDescription = "logo"
-                            )
-                        },
-                        visualTransformation =
+                                    contentDescription = "logo"
+                                )
+                            },
+                            visualTransformation =
                             if (showPassword.value) {
                                 VisualTransformation.None
                             } else {
                                 PasswordVisualTransformation()
                             }
-                    ) {
-                        screenModel.setEvent(
-                            SignUpContract.SignUpEvent.ConfirmPasswordChanged(
-                                it
+                        ) {
+                            screenModel.setEvent(
+                                SignUpContract.SignUpEvent.ConfirmPasswordChanged(
+                                    it
+                                )
                             )
-                        )
+                        }
+                        Button(
+                            onClick = { screenModel.setEvent(SignUpContract.SignUpEvent.SignUpButtonClicked) },
+                            modifier = Modifier.height(50.dp)
+                        ) {
+                            Text("Cadastrar", color = androidx.compose.ui.graphics.Color.White)
+                        }
+                        Spacer(modifier = Modifier.height(8.dp))
                     }
-                    Button(
-                        onClick = { screenModel.setEvent(SignUpContract.SignUpEvent.SignUpButtonClicked) },
-                        modifier = Modifier.height(50.dp)
-                    ) {
-                        Text("Cadastrar", color = androidx.compose.ui.graphics.Color.White)
-                    }
-                    Spacer(modifier = Modifier.height(8.dp))
                 }
             }
         }

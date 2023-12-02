@@ -52,10 +52,6 @@ val networkModule =
 
                 defaultRequest {
                     contentType(ContentType.Application.Json)
-                    headers.append(
-                        "Authorization",
-                        "Bearer ${get<PreferencesDataSource>().getAccessToken()}"
-                    )
                 }
             }
         }

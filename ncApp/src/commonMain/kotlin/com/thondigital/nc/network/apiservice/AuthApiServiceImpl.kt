@@ -32,18 +32,21 @@ class AuthApiServiceImpl(
     override suspend fun signUp(signUpRequest: SignUpRequest): TokensNetworkModel {
         return httpClient.post("$BASE_ENDPOINT/$SIGNUP_ENDPOINT") {
             body = Json.encodeToString(SignUpRequest.serializer(), signUpRequest)
+            contentType(ContentType.Application.Json)
         }.body() as TokensNetworkModel
     }
 
     override suspend fun updateToken(updateTokenRequest: UpdateTokenRequest): TokensNetworkModel {
         return httpClient.put("$BASE_ENDPOINT/$REFRESH_TOKEN_ENDPOINT") {
             body = Json.encodeToString(UpdateTokenRequest.serializer(), updateTokenRequest)
+            contentType(ContentType.Application.Json)
         }.body() as TokensNetworkModel
     }
 
     override suspend fun revokeToken(updateTokenRequest: UpdateTokenRequest): TokensNetworkModel {
         return httpClient.put("$BASE_ENDPOINT/$REVOKE_TOKEN_ENDPOINT") {
             body = Json.encodeToString(UpdateTokenRequest.serializer(), updateTokenRequest)
+            contentType(ContentType.Application.Json)
         }.body() as TokensNetworkModel
     }
 }
