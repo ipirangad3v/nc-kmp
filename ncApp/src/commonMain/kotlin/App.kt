@@ -22,7 +22,7 @@ fun App(
 
         Navigator(
             HomeScreen(
-                playstate = playerState,
+                playState = playerState,
                 onPause = { player.pause() }
             ) { player.play() }
         ) { navigator ->

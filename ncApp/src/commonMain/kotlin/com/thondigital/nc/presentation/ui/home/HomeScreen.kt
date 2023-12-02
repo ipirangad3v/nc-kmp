@@ -38,14 +38,14 @@ import com.thondigital.nc.presentation.ui.home.HomeScreenModel.State.Result
 import com.thondigital.nc.presentation.ui.theme.primaryBlue
 
 class HomeScreen(
-    private val playstate: PlayerState,
+    private val playState: PlayerState,
     private val onPause: () -> Unit,
     private val onPlay: () -> Unit
 ) : Screen {
     @OptIn(ExperimentalMaterialApi::class, ExperimentalVoyagerApi::class)
     @Composable
     override fun Content() {
-        val isPlaying = playstate.isPlaying
+        val isPlaying = playState.isPlaying
 
         val navigator = LocalNavigator.currentOrThrow
         val screenModel = navigator.getNavigatorScreenModel<HomeScreenModel>()
@@ -87,13 +87,17 @@ class HomeScreen(
         Box(
             modifier = Modifier.fillMaxSize().pullRefresh(pullRefreshState)
         ) {
-            LazyColumn {
+            LazyColumn(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
                 item {
                     TopBar()
                 }
                 if (result.isUserAuthenticated) {
-                    item {
-                        Text("Welcome")
+                    result.account?.let {
+                        item {
+                            Text(it.toString())
+                        }
                     }
                 } else {
                     item {

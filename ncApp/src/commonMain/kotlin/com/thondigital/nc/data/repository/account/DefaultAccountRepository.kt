@@ -16,10 +16,14 @@ class DefaultAccountRepository(
 ) : AccountRepository {
     override suspend fun requestAccount(): DataResult<AccountDomainModel> {
         return when (val result = accountNetworkDataSource.getAccount()) {
-            is DataResult.Success ->
+            is DataResult.Success -> {
+                storeAccount(accountDataDomainMapper.from(result.data))
+
                 DataResult.Success(
                     accountDataDomainMapper.from(result.data)
                 )
+            }
+
             is DataResult.Error -> DataResult.Error(result.exception)
         }
     }

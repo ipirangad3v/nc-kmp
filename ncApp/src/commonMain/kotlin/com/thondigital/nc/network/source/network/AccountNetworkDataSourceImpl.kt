@@ -1,4 +1,4 @@
-package com.thondigital.nc.network.source
+package com.thondigital.nc.network.source.network
 
 import com.thondigital.nc.common.exception.NetworkException
 import com.thondigital.nc.common.wrapper.DataResult
