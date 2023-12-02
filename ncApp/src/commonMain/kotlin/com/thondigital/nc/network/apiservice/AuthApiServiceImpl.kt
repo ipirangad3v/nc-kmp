@@ -11,44 +11,17 @@ import com.thondigital.nc.network.model.request.UpdateTokenRequest
 import com.thondigital.nc.network.model.response.TokensNetworkModel
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
-import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.client.plugins.defaultRequest
-import io.ktor.client.plugins.logging.LogLevel
-import io.ktor.client.plugins.logging.Logger
-import io.ktor.client.plugins.logging.Logging
-import io.ktor.client.plugins.logging.SIMPLE
 import io.ktor.client.request.post
 import io.ktor.client.request.put
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
-import io.ktor.serialization.kotlinx.json.json
 import io.ktor.util.InternalAPI
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 
-@OptIn(InternalAPI::class, ExperimentalSerializationApi::class)
-class AuthApiServiceImpl : AuthApiService {
-    private val httpClient =
-        HttpClient {
-            install(Logging) {
-                logger = Logger.SIMPLE
-                level = LogLevel.ALL
-            }
-            install(ContentNegotiation) {
-                json(
-                    Json {
-                        ignoreUnknownKeys = true
-                        useAlternativeNames = false
-                        explicitNulls = false
-                    }
-                )
-            }
-
-            defaultRequest {
-                contentType(ContentType.Application.Json)
-            }
-        }
-
+@OptIn(InternalAPI::class)
+class AuthApiServiceImpl(
+    private val httpClient: HttpClient
+) : AuthApiService {
     override suspend fun signIn(signInRequest: SignInRequest): TokensNetworkModel {
         return httpClient.post("$BASE_ENDPOINT/$SIGNIN_ENDPOINT") {
             body = Json.encodeToString(SignInRequest.serializer(), signInRequest)

@@ -3,8 +3,6 @@ package com.thondigital.nc.di
 import com.thondigital.nc.domain.usecase.auth.signin.email.SignInUseCase
 import com.thondigital.nc.domain.usecase.auth.signup.SignUpUseCase
 import com.thondigital.nc.domain.usecase.auth.status.AuthenticationStatusUseCase
-import com.thondigital.nc.domain.usecase.streaming.radiostream.StartRadioStreamUseCase
-import com.thondigital.nc.domain.usecase.streaming.radiostream.StopRadioStreamUseCase
 import com.thondigital.nc.presentation.ui.auth.signin.SignInScreenModel
 import com.thondigital.nc.presentation.ui.auth.signup.SignUpScreenModel
 import com.thondigital.nc.presentation.ui.calendar.CalendarScreenModel
@@ -26,10 +24,7 @@ val presentationModule =
         factory { EventDetailsScreenModel() }
         factory { SignInScreenModel(SignInUseCase(get(), get(named("ioDispatcher")))) }
         factory {
-            RadioStreamingScreenModel(
-                StartRadioStreamUseCase(get()),
-                StopRadioStreamUseCase(get())
-            )
+            RadioStreamingScreenModel()
         }
         factory {
             SignUpScreenModel(

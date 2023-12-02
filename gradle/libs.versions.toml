@@ -4,7 +4,7 @@ logback = "1.4.11"
 compose = "1.5.4"
 compose-plugin = "1.5.10"
 compose-compiler = "1.5.4"
-agp = "8.1.4"
+agp = "8.2.0"
 android-minSdk = "24"
 android-compileSdk = "34"
 android-targetSdk = "34"
@@ -21,7 +21,7 @@ junit = "4.13.2"
 koin = "3.5.0"
 google-services = "4.4.0"
 firebase-bom = "32.6.0"
-firebase-crashlytics = "2.8.1"
+firebase-crashlytics = "2.9.9"
 qdsfdhvh-image-loader = "1.5.3"
 firebase-common = "20.4.2"
 plugin-serialization = "1.9.0"
@@ -30,6 +30,7 @@ kotlinx-serialization-json = "1.5.1"
 datetime = "0.4.0"
 sqlDelight = "2.0.0"
 exoplayer = "1.2.0"
+work-runtime-ktx = "2.9.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -78,7 +79,7 @@ ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "exoplayer" }
 exoplayer-ui = { module = "androidx.media3:media3-ui", version.ref = "exoplayer" }
 exoplayer-dash = { module = "androidx.media3:media3-exoplayer-dash", version.ref = "exoplayer" }
-androidx-work-runtime-ktx = { group = "androidx.work", name = "work-runtime-ktx", version = "2.8.1" }
+androidx-work-runtime-ktx = { group = "androidx.work", name = "work-runtime-ktx", version = "2.9.0" }
 
 [plugins]
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
