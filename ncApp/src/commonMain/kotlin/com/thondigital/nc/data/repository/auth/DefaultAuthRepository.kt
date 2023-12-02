@@ -39,7 +39,7 @@ class DefaultAuthRepository(
 
     override suspend fun fetchTokens(): TokensDomainModel {
         return with(preferencesDataSource) {
-            TokensDomainModel(getAccessToken(), getRefreshToken())
+            TokensDomainModel(getAccessToken(), getRefreshToken(), "", "")
         }
     }
 

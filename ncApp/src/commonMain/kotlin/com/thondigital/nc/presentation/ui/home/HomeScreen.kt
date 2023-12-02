@@ -46,8 +46,6 @@ object HomeScreen : Screen {
     @OptIn(ExperimentalMaterialApi::class, ExperimentalVoyagerApi::class)
     @Composable
     override fun Content() {
-
-
         val navigator = LocalNavigator.currentOrThrow
         val screenModel = navigator.getNavigatorScreenModel<HomeScreenModel>()
         val isPlaying = screenModel.isPlaying
@@ -126,7 +124,7 @@ object HomeScreen : Screen {
                         modifier = Modifier.fillMaxWidth(),
                         isPlaying = isPlaying,
                         onPause = screenModel::pause,
-                        onPlay = screenModel::play,
+                        onPlay = screenModel::play
                     )
                 }
                 item {
@@ -138,9 +136,9 @@ object HomeScreen : Screen {
                 state = pullRefreshState,
                 contentColor = primaryBlue,
                 modifier =
-                Modifier.align(
-                    Alignment.TopCenter
-                ),
+                    Modifier.align(
+                        Alignment.TopCenter
+                    ),
                 backgroundColor = Color.Transparent
             )
         }
@@ -153,7 +151,6 @@ object HomeScreen : Screen {
             modifier = Modifier.fillMaxWidth().padding(16.dp),
             style = MaterialTheme.typography.bodyLarge
         )
-
     }
 
     @Composable

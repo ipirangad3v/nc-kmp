@@ -16,7 +16,6 @@ class HomeScreenModel(
     private val authenticationStatusUseCase: AuthenticationStatusUseCase,
     private val getAccountUseCase: GetAccountUseCase
 ) : StateScreenModel<HomeScreenModel.State>(State.Init) {
-
     private val playerState = PlayerState()
     var isPlaying: Boolean by mutableStateOf(playerState.isPlaying)
         private set

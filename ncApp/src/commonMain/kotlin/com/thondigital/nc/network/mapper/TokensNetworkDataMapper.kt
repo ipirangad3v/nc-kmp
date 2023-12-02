@@ -11,14 +11,18 @@ class TokensNetworkDataMapper : Mapper<TokensNetworkModel, TokensDataModel> {
     override fun from(i: TokensNetworkModel): TokensDataModel {
         return TokensDataModel(
             accessToken = i.accessToken.orEmpty(),
-            refreshToken = i.refreshToken.orEmpty()
+            refreshToken = i.refreshToken.orEmpty(),
+            status = i.status,
+            message = i.message
         )
     }
 
     override fun to(o: TokensDataModel): TokensNetworkModel {
         return TokensNetworkModel(
             accessToken = o.accessToken,
-            refreshToken = o.refreshToken
+            refreshToken = o.refreshToken,
+            status = o.status,
+            message = o.message
         )
     }
 }

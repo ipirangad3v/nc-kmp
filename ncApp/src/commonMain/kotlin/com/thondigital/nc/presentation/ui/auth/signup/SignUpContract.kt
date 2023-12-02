@@ -1,5 +1,7 @@
 package com.thondigital.nc.presentation.ui.auth.signup
 
+import kotlinx.serialization.Serializable
+
 class SignUpContract {
     sealed class SignUpEvent {
         data class EmailChanged(val email: String) : SignUpEvent()
@@ -17,6 +19,9 @@ class SignUpContract {
         data class ShowSnackBarError(val message: String) : SignUpViewEffect()
 
         object NavigateToHome : SignUpViewEffect()
+
+        @Serializable
+        data object Init : SignUpViewEffect()
     }
 
     data class SignUpViewState(

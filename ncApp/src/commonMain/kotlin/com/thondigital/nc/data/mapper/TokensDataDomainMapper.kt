@@ -7,18 +7,22 @@ import com.thondigital.nc.domain.model.TokensDomainModel
 /**
  * Mapper class for convert [TokensDataModel] to [TokensDomainModel] and vice versa
  */
-class TokensDataDomainMapper() : Mapper<TokensDataModel, TokensDomainModel> {
+class TokensDataDomainMapper : Mapper<TokensDataModel, TokensDomainModel> {
     override fun from(i: TokensDataModel): TokensDomainModel {
         return TokensDomainModel(
             accessToken = i.accessToken,
-            refreshToken = i.refreshToken
+            refreshToken = i.refreshToken,
+            status = i.status,
+            message = i.message
         )
     }
 
     override fun to(o: TokensDomainModel): TokensDataModel {
         return TokensDataModel(
             accessToken = o.accessToken,
-            refreshToken = o.refreshToken
+            refreshToken = o.refreshToken,
+            status = o.status,
+            message = o.message
         )
     }
 }

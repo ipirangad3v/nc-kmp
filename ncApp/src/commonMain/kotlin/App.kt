@@ -13,8 +13,6 @@ fun App(
         darkTheme = darkTheme,
         dynamicColor = dynamicColor
     ) {
-
-
         Navigator(
             HomeScreen
         ) { navigator ->
