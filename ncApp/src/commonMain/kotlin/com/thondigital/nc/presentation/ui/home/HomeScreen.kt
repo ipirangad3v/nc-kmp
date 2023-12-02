@@ -23,7 +23,6 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getNavigatorScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.thondigital.nc.audioplayer.PlayerState
 import com.thondigital.nc.data.remote.responses.HomeResponse
 import com.thondigital.nc.presentation.ui.auth.signin.SignInScreen
 import com.thondigital.nc.presentation.ui.components.EventsList
@@ -37,18 +36,15 @@ import com.thondigital.nc.presentation.ui.home.HomeScreenModel.State.Loading
 import com.thondigital.nc.presentation.ui.home.HomeScreenModel.State.Result
 import com.thondigital.nc.presentation.ui.theme.primaryBlue
 
-class HomeScreen(
-    private val playState: PlayerState,
-    private val onPause: () -> Unit,
-    private val onPlay: () -> Unit
-) : Screen {
+object HomeScreen : Screen {
     @OptIn(ExperimentalMaterialApi::class, ExperimentalVoyagerApi::class)
     @Composable
     override fun Content() {
-        val isPlaying = playState.isPlaying
+
 
         val navigator = LocalNavigator.currentOrThrow
         val screenModel = navigator.getNavigatorScreenModel<HomeScreenModel>()
+        val isPlaying = screenModel.isPlaying
         val state by screenModel.state.collectAsState()
 
         LaunchedEffect(screenModel) {
@@ -123,8 +119,8 @@ class HomeScreen(
                     Player(
                         modifier = Modifier.fillMaxWidth(),
                         isPlaying = isPlaying,
-                        onPause = onPause,
-                        onPlay = onPlay
+                        onPause = screenModel::pause,
+                        onPlay = screenModel::play,
                     )
                 }
                 item {
@@ -136,9 +132,9 @@ class HomeScreen(
                 state = pullRefreshState,
                 contentColor = primaryBlue,
                 modifier =
-                    Modifier.align(
-                        Alignment.TopCenter
-                    ),
+                Modifier.align(
+                    Alignment.TopCenter
+                ),
                 backgroundColor = Color.Transparent
             )
         }
