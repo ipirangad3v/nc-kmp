@@ -1,5 +1,6 @@
 package com.thondigital.nc.presentation.ui.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -30,7 +31,6 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.thondigital.nc.data.remote.responses.HomeResponse
 import com.thondigital.nc.domain.model.AccountDomainModel
 import com.thondigital.nc.presentation.ui.auth.signin.SignInScreen
-import com.thondigital.nc.presentation.ui.components.DefaultButton
 import com.thondigital.nc.presentation.ui.components.EventsList
 import com.thondigital.nc.presentation.ui.components.Loading
 import com.thondigital.nc.presentation.ui.components.Menu
@@ -156,17 +156,14 @@ object HomeScreen : Screen {
     @Composable
     private fun LoginButton(onClick: () -> Unit) {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(16.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth().padding(16.dp).clickable { onClick() },
+            horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "Olá, visitante! Entre aqui para mais novidades",
+                text = "Olá, visitante! Efetue o login aqui",
                 style = MaterialTheme.typography.bodyMedium
             )
-            DefaultButton("Entrar") {
-                onClick()
-            }
         }
     }
 }
