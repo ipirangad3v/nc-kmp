@@ -60,7 +60,7 @@ fun RadioPlayer(
                     Modifier
                         .width(100.dp)
                         .height(100.dp),
-                painter = painterResource("images/boasnovas.jpeg"),
+                painter = painterResource("images/boasnovas.png"),
                 contentDescription = "logo"
             )
             Column(
