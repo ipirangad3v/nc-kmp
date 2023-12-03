@@ -27,13 +27,13 @@ fun Menu() {
 
     val totalHeight = menuItemHeight * rows
 
-    val adjustedHeight = totalHeight * sizeMultiplier + 16.dp
+    val adjustedHeight = totalHeight * sizeMultiplier + 48.dp
 
     LazyVerticalGrid(
         modifier = Modifier.fillMaxWidth().height(adjustedHeight),
-        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp),
+        contentPadding = PaddingValues(16.dp),
         columns = GridCells.Fixed(columns),
-        verticalArrangement = Arrangement.Top,
+        verticalArrangement = Arrangement.SpaceBetween,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         items(items) {

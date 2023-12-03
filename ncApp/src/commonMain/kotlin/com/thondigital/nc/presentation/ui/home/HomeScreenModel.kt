@@ -85,4 +85,9 @@ class HomeScreenModel(
                 )
         }
     }
+
+    override fun onDispose() {
+        super.onDispose()
+        player.cleanUp()
+    }
 }
