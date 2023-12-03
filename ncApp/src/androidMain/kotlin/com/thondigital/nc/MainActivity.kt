@@ -7,8 +7,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.google.firebase.Firebase
 import com.google.firebase.initialize
@@ -24,7 +22,7 @@ class MainActivity : ComponentActivity() {
                 color = MaterialTheme.colors.background
             ) {
                 App(
-//                    darkTheme = isSystemInDarkTheme(),
+                    //                    darkTheme = isSystemInDarkTheme(),
                     darkTheme = true,
                     dynamicColor = true
                 )

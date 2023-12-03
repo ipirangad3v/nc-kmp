@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -95,10 +94,11 @@ private fun Controls(
     onPause: () -> Unit,
     onPlay: () -> Unit
 ) {
-    Box(Modifier.size(50.dp)) {
+    val iconSize = 50.dp
+    Box {
         Button(
             onClick = { if (isPlaying) onPause() else onPlay() },
-            modifier = Modifier.wrapContentSize(Alignment.Center),
+            modifier = Modifier.size(iconSize * 1.1f),
             shape = CircleShape,
             colors = ButtonDefaults.buttonColors(backgroundColor = Yellow)
         ) {
@@ -112,7 +112,7 @@ private fun Controls(
                         )
                     },
                 contentDescription = "",
-                modifier = Modifier.size(50.dp),
+                modifier = Modifier.size(iconSize),
                 tint = BluePrimaryDark
             )
         }

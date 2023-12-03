@@ -94,6 +94,7 @@ kotlin {
 
             implementation(libs.firestore)
             implementation(libs.firebase.common)
+            implementation(libs.firebase.config)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.datetime)
 

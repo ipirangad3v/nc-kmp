@@ -10,6 +10,9 @@ import com.thondigital.nc.audioplayer.PlayerState
 import com.thondigital.nc.data.remote.responses.HomeResponse
 import com.thondigital.nc.domain.usecase.account.detail.GetAccountUseCase
 import com.thondigital.nc.domain.usecase.auth.status.AuthenticationStatusUseCase
+import dev.gitlive.firebase.Firebase
+import dev.gitlive.firebase.remoteconfig.FirebaseRemoteConfigValue
+import dev.gitlive.firebase.remoteconfig.remoteConfig
 import kotlinx.coroutines.launch
 
 class HomeScreenModel(
@@ -20,6 +23,31 @@ class HomeScreenModel(
     var isPlaying: Boolean by mutableStateOf(playerState.isPlaying)
         private set
     private val player = AudioPlayer(playerState)
+
+    private val remoteConfig = Firebase.remoteConfig
+    var showRadioState by mutableStateOf(false)
+        private set
+
+    init {
+        screenModelScope.launch {
+            remoteConfig.fetchAndActivate()
+            "show_radio_at_home".let {
+                setRemoteConfig(it, remoteConfig.getValue(it))
+            }
+        }
+    }
+
+    private fun setRemoteConfig(
+        key: String,
+        value: FirebaseRemoteConfigValue
+    ) {
+        when (key) {
+            "show_radio_at_home" -> {
+                showRadioState =
+                    value.asBoolean()
+            }
+        }
+    }
 
     sealed class State {
         data object Init : State()

@@ -25,8 +25,8 @@ firebase-crashlytics = "2.9.9"
 qdsfdhvh-image-loader = "1.5.3"
 firebase-common = "20.4.2"
 plugin-serialization = "1.9.0"
-firestore = "1.8.1"
-kotlinx-serialization-json = "1.5.1"
+firebase = "1.10.4"
+kotlinx-serialization-json = "1.6.0"
 datetime = "0.4.0"
 sqlDelight = "2.0.0"
 exoplayer = "1.2.0"
@@ -61,9 +61,10 @@ androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifec
 android-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
 android-firebase-analytics = { module = "com.google.firebase:firebase-analytics-ktx" }
 android-firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics-ktx" }
+firebase-config = { module = "dev.gitlive:firebase-config", version.ref = "firebase" }
 qdsfdhvh-image-loader = { module = "io.github.qdsfdhvh:image-loader", version.ref = "qdsfdhvh-image-loader" }
-firebase-common = { module = "dev.gitlive:firebase-common", version.ref = "firestore" }
-firestore = { module = "dev.gitlive:firebase-firestore", version.ref = "firestore" }
+firebase-common = { module = "dev.gitlive:firebase-common", version.ref = "firebase" }
+firestore = { module = "dev.gitlive:firebase-firestore", version.ref = "firebase" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "datetime" }
 ktor-client-serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }

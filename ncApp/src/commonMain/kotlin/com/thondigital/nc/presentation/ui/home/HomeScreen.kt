@@ -50,6 +50,7 @@ object HomeScreen : Screen {
         val screenModel = navigator.getNavigatorScreenModel<HomeScreenModel>()
         val isPlaying = screenModel.isPlaying
         val state by screenModel.state.collectAsState()
+        val showRadio = screenModel.showRadioState
 
         LaunchedEffect(screenModel) {
             screenModel.getHome()
@@ -68,7 +69,8 @@ object HomeScreen : Screen {
                     (state as Result).result,
                     pullRefreshState,
                     screenModel,
-                    isPlaying
+                    isPlaying,
+                    showRadio
                 )
 
             is Init -> screenModel.getHome()
@@ -81,7 +83,8 @@ object HomeScreen : Screen {
         result: HomeResponse,
         pullRefreshState: PullRefreshState,
         screenModel: HomeScreenModel,
-        isPlaying: Boolean
+        isPlaying: Boolean,
+        showRadio: Boolean
     ) {
         val navigator = LocalNavigator.currentOrThrow
         Box(
@@ -120,12 +123,14 @@ object HomeScreen : Screen {
                         }
                     }
                 }
-                item {
-                    RadioPlayer(
-                        isPlaying = isPlaying,
-                        onPause = screenModel::pause,
-                        onPlay = screenModel::play
-                    )
+                if (showRadio) {
+                    item {
+                        RadioPlayer(
+                            isPlaying = isPlaying,
+                            onPause = screenModel::pause,
+                            onPlay = screenModel::play
+                        )
+                    }
                 }
                 item {
                     Menu()
