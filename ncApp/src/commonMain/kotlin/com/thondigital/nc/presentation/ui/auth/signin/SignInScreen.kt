@@ -6,11 +6,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Text
-import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
@@ -22,7 +20,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -37,6 +34,7 @@ import com.thondigital.nc.presentation.ui.auth.signin.SignInContract.SignInViewE
 import com.thondigital.nc.presentation.ui.auth.signin.SignInContract.SignInViewEffect.NavigateToSignUp
 import com.thondigital.nc.presentation.ui.auth.signin.SignInContract.SignInViewEffect.ShowSnackBarError
 import com.thondigital.nc.presentation.ui.auth.signup.SignUpScreen
+import com.thondigital.nc.presentation.ui.components.DefaultButton
 import com.thondigital.nc.presentation.ui.components.EditTextWithErrorMessage
 import com.thondigital.nc.presentation.ui.components.Loading
 import com.thondigital.nc.presentation.ui.components.TopBar
@@ -96,9 +94,9 @@ object SignInScreen : Screen {
                     ) {
                         Image(
                             modifier =
-                                Modifier
-                                    .width(200.dp)
-                                    .height(200.dp),
+                            Modifier
+                                .width(200.dp)
+                                .height(200.dp),
                             painter = painterResource("images/logonegativa.png"),
                             contentDescription = "logo"
                         )
@@ -131,40 +129,37 @@ object SignInScreen : Screen {
                             rightIcon = {
                                 Image(
                                     modifier =
-                                        Modifier
-                                            .width(30.dp)
-                                            .height(30.dp).clickable {
-                                                showPassword.value = !showPassword.value
-                                            },
+                                    Modifier
+                                        .width(30.dp)
+                                        .height(30.dp).clickable {
+                                            showPassword.value = !showPassword.value
+                                        },
                                     painter =
-                                        painterResource(
-                                            if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
-                                        ),
+                                    painterResource(
+                                        if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
+                                    ),
                                     contentDescription = "logo"
                                 )
                             },
                             visualTransformation =
-                                if (showPassword.value) {
-                                    VisualTransformation.None
-                                } else {
-                                    PasswordVisualTransformation()
-                                }
+                            if (showPassword.value) {
+                                VisualTransformation.None
+                            } else {
+                                PasswordVisualTransformation()
+                            }
                         )
-                        Button(
-                            onClick = { screenModel.setEvent(SignInContract.SignInEvent.SignInButtonClicked) },
-                            modifier = Modifier.height(50.dp).fillMaxWidth(0.5f)
-                        ) {
-                            Text("Entrar", color = White)
+                        DefaultButton("Entrar") {
+                            screenModel.setEvent(SignInContract.SignInEvent.SignInButtonClicked)
                         }
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(
                             "Novo usuário? Clique aqui para se cadastrar",
                             modifier =
-                                Modifier.clickable {
-                                    screenModel.setEvent(
-                                        SignInContract.SignInEvent.SignUpTextViewClicked
-                                    )
-                                }
+                            Modifier.clickable {
+                                screenModel.setEvent(
+                                    SignInContract.SignInEvent.SignUpTextViewClicked
+                                )
+                            }
                         )
                     }
                 }

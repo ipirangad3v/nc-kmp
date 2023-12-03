@@ -2,31 +2,24 @@ package com.thondigital.nc.presentation.ui.theme
 
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
+import androidx.compose.ui.graphics.Color
 
 val DarkColorScheme =
     darkColors(
-        primary = BluePrimaryDark,
-        secondary = GreenSecondaryDark,
-        onPrimary = OnGreenDark,
-        onSecondary = OnGreenSecondaryDark,
-        background = BackgroundDark,
-        onBackground = OnBackgroundDark,
-        surface = SurfaceDark,
-        onSurface = OnSurfaceDark,
-        error = ErrorDark,
-        onError = OnErrorDark
+        primary = primaryBlue,
+        onPrimary = Color.White,
+        secondary = Yellow,
+        onSecondary = Color.White,
+        background = Color(0xFFF2E7FE),
+        onBackground = Color(0xFF1C1B1F)
     )
 
 val LightColorScheme =
     lightColors(
         primary = primaryBlue,
-        secondary = GreenSecondaryLight,
-        onPrimary = OnGreenLight,
-        onSecondary = OnGreenSecondaryLight,
-        background = BackgroundLight,
-        onBackground = OnBackgroundLight,
-        surface = SurfaceLight,
-        onSurface = OnSurfaceLight,
-        error = ErrorLight,
-        onError = OnErrorLight
+        onPrimary = Color.White,
+        secondary = Yellow,
+        onSecondary = Color.White,
+        background = Color(0xFFF2E7FE),
+        onBackground = Color(0xFF1C1B1F)
     )

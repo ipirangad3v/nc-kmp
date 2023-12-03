@@ -8,12 +8,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
@@ -33,6 +31,7 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.thondigital.nc.presentation.ui.auth.signin.SignInScreen
 import com.thondigital.nc.presentation.ui.auth.signup.SignUpContract.SignUpViewEffect.NavigateToHome
 import com.thondigital.nc.presentation.ui.auth.signup.SignUpContract.SignUpViewEffect.ShowSnackBarError
+import com.thondigital.nc.presentation.ui.components.DefaultButton
 import com.thondigital.nc.presentation.ui.components.EditTextWithErrorMessage
 import com.thondigital.nc.presentation.ui.components.Loading
 import com.thondigital.nc.presentation.ui.components.TopBar
@@ -87,9 +86,9 @@ object SignUpScreen : Screen {
                     ) {
                         Image(
                             modifier =
-                                Modifier
-                                    .width(200.dp)
-                                    .height(200.dp),
+                            Modifier
+                                .width(200.dp)
+                                .height(200.dp),
                             painter = painterResource("images/logonegativa.png"),
                             contentDescription = "logo"
                         )
@@ -126,24 +125,24 @@ object SignUpScreen : Screen {
                             rightIcon = {
                                 Image(
                                     modifier =
-                                        Modifier
-                                            .width(30.dp)
-                                            .height(30.dp).clickable {
-                                                showPassword.value = !showPassword.value
-                                            },
+                                    Modifier
+                                        .width(30.dp)
+                                        .height(30.dp).clickable {
+                                            showPassword.value = !showPassword.value
+                                        },
                                     painter =
-                                        painterResource(
-                                            if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
-                                        ),
+                                    painterResource(
+                                        if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
+                                    ),
                                     contentDescription = "logo"
                                 )
                             },
                             visualTransformation =
-                                if (showPassword.value) {
-                                    VisualTransformation.None
-                                } else {
-                                    PasswordVisualTransformation()
-                                }
+                            if (showPassword.value) {
+                                VisualTransformation.None
+                            } else {
+                                PasswordVisualTransformation()
+                            }
                         ) {
                             screenModel.setEvent(
                                 SignUpContract.SignUpEvent.PasswordChanged(
@@ -159,24 +158,24 @@ object SignUpScreen : Screen {
                             rightIcon = {
                                 Image(
                                     modifier =
-                                        Modifier
-                                            .width(30.dp)
-                                            .height(30.dp).clickable {
-                                                showPassword.value = !showPassword.value
-                                            },
+                                    Modifier
+                                        .width(30.dp)
+                                        .height(30.dp).clickable {
+                                            showPassword.value = !showPassword.value
+                                        },
                                     painter =
-                                        painterResource(
-                                            if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
-                                        ),
+                                    painterResource(
+                                        if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
+                                    ),
                                     contentDescription = "logo"
                                 )
                             },
                             visualTransformation =
-                                if (showPassword.value) {
-                                    VisualTransformation.None
-                                } else {
-                                    PasswordVisualTransformation()
-                                }
+                            if (showPassword.value) {
+                                VisualTransformation.None
+                            } else {
+                                PasswordVisualTransformation()
+                            }
                         ) {
                             screenModel.setEvent(
                                 SignUpContract.SignUpEvent.ConfirmPasswordChanged(
@@ -184,11 +183,8 @@ object SignUpScreen : Screen {
                                 )
                             )
                         }
-                        Button(
-                            onClick = { screenModel.setEvent(SignUpContract.SignUpEvent.SignUpButtonClicked) },
-                            modifier = Modifier.height(50.dp)
-                        ) {
-                            Text("Cadastrar", color = androidx.compose.ui.graphics.Color.White)
+                        DefaultButton("Cadastrar") {
+                            screenModel.setEvent(SignUpContract.SignUpEvent.SignUpButtonClicked)
                         }
                         Spacer(modifier = Modifier.height(8.dp))
                     }

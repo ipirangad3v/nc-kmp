@@ -21,7 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.thondigital.nc.domain.model.ClickableMenuItem
-import com.thondigital.nc.presentation.ui.theme.primaryLightBlue
+import com.thondigital.nc.presentation.ui.theme.primaryBlue
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
@@ -42,7 +42,7 @@ fun MenuItem(
                 Modifier
                     .width(100.dp)
                     .height(100.dp)
-                    .background(color = primaryLightBlue, shape = RoundedCornerShape(size = 10.dp))
+                    .background(color = primaryBlue, shape = RoundedCornerShape(size = 10.dp))
         ) {
             Image(
                 modifier =

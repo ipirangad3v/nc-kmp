@@ -19,12 +19,12 @@ fun Menu() {
     val navigator = LocalNavigator.currentOrThrow
     LazyVerticalGrid(
         modifier =
-            Modifier.fillMaxWidth().height(
-                400.dp
-            ),
+        Modifier.fillMaxWidth().height(
+            400.dp
+        ),
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
         columns = GridCells.Adaptive(minSize = 100.dp),
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Top,
         horizontalArrangement = Arrangement.Center
     ) {
         items(getNavigationItems()) {

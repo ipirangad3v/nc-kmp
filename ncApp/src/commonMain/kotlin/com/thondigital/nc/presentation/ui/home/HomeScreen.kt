@@ -12,7 +12,6 @@ import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.PullRefreshState
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,10 +30,11 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.thondigital.nc.data.remote.responses.HomeResponse
 import com.thondigital.nc.domain.model.AccountDomainModel
 import com.thondigital.nc.presentation.ui.auth.signin.SignInScreen
+import com.thondigital.nc.presentation.ui.components.DefaultButton
 import com.thondigital.nc.presentation.ui.components.EventsList
 import com.thondigital.nc.presentation.ui.components.Loading
 import com.thondigital.nc.presentation.ui.components.Menu
-import com.thondigital.nc.presentation.ui.components.Player
+import com.thondigital.nc.presentation.ui.components.RadioPlayer
 import com.thondigital.nc.presentation.ui.components.TopBar
 import com.thondigital.nc.presentation.ui.event.EventDetailsScreen
 import com.thondigital.nc.presentation.ui.home.HomeScreenModel.State.Init
@@ -85,10 +85,11 @@ object HomeScreen : Screen {
     ) {
         val navigator = LocalNavigator.currentOrThrow
         Box(
-            modifier = Modifier.fillMaxSize().pullRefresh(pullRefreshState)
+            modifier = Modifier.fillMaxSize().pullRefresh(pullRefreshState, enabled = true)
         ) {
             LazyColumn(
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Top,
             ) {
                 item {
                     TopBar()
@@ -120,8 +121,7 @@ object HomeScreen : Screen {
                     }
                 }
                 item {
-                    Player(
-                        modifier = Modifier.fillMaxWidth(),
+                    RadioPlayer(
                         isPlaying = isPlaying,
                         onPause = screenModel::pause,
                         onPlay = screenModel::play
@@ -136,9 +136,9 @@ object HomeScreen : Screen {
                 state = pullRefreshState,
                 contentColor = primaryBlue,
                 modifier =
-                    Modifier.align(
-                        Alignment.TopCenter
-                    ),
+                Modifier.align(
+                    Alignment.TopCenter
+                ),
                 backgroundColor = Color.Transparent
             )
         }
@@ -164,8 +164,8 @@ object HomeScreen : Screen {
                 text = "Olá, visitante! Entre aqui para mais novidades",
                 style = MaterialTheme.typography.bodyMedium
             )
-            Button(onClick = onClick) {
-                Text("Entrar")
+            DefaultButton("Entrar") {
+                onClick()
             }
         }
     }
