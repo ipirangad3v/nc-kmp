@@ -1,8 +1,11 @@
 package com.thondigital.nc.presentation.navigation
 
+import com.thondigital.nc.common.utils.openInstagramProfile
+import com.thondigital.nc.common.utils.openSpotify
+import com.thondigital.nc.common.utils.openYouTubeChannel
 import com.thondigital.nc.domain.model.ClickableMenuItem
 import com.thondigital.nc.presentation.ui.calendar.CalendarScreen
-import com.thondigital.nc.presentation.ui.streaming.RadioStreamingScreen
+import com.thondigital.nc.presentation.ui.podcast.ExternalScreen
 
 object NavigationHelper {
     fun getNavigationItems(): List<ClickableMenuItem> =
@@ -13,59 +16,28 @@ object NavigationHelper {
                 name = "Calendário"
             ),
             ClickableMenuItem(
-                screen = RadioStreamingScreen,
-                resourceId = "radio.png",
-                name = "Rádio Boas Novas"
-            ),
-            ClickableMenuItem(
-                screen = CalendarScreen,
+                screen =
+                    ExternalScreen {
+                        openSpotify()
+                    },
                 resourceId = "podcast.png",
                 name = "Podcast"
             ),
             ClickableMenuItem(
-                screen = CalendarScreen,
-                resourceId = "article.png",
-                name = "Artigos"
+                screen =
+                    ExternalScreen {
+                        openYouTubeChannel()
+                    },
+                resourceId = "youtube.png",
+                name = "Youtube"
             ),
             ClickableMenuItem(
-                screen = CalendarScreen,
-                resourceId = "calendar.png",
-                name = "Calendário"
-            ),
-            ClickableMenuItem(
-                screen = RadioStreamingScreen,
-                resourceId = "radio.png",
-                name = "Rádio Boas Novas"
-            ),
-            ClickableMenuItem(
-                screen = CalendarScreen,
-                resourceId = "podcast.png",
-                name = "Podcast"
-            ),
-            ClickableMenuItem(
-                screen = CalendarScreen,
-                resourceId = "article.png",
-                name = "Artigos"
-            ),
-            ClickableMenuItem(
-                screen = CalendarScreen,
-                resourceId = "calendar.png",
-                name = "Calendário"
-            ),
-            ClickableMenuItem(
-                screen = RadioStreamingScreen,
-                resourceId = "radio.png",
-                name = "Rádio Boas Novas"
-            ),
-            ClickableMenuItem(
-                screen = CalendarScreen,
-                resourceId = "podcast.png",
-                name = "Podcast"
-            ),
-            ClickableMenuItem(
-                screen = CalendarScreen,
-                resourceId = "article.png",
-                name = "Artigos"
+                screen =
+                    ExternalScreen {
+                        openInstagramProfile()
+                    },
+                resourceId = "instagram.png",
+                name = "Instagram"
             )
         )
 }

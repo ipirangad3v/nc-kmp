@@ -1,5 +1,6 @@
 package com.thondigital.nc.presentation.ui.home
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -65,13 +66,15 @@ object HomeScreen : Screen {
         when (state) {
             is Loading -> Loading()
             is Result ->
-                HomeContent(
-                    (state as Result).result,
-                    pullRefreshState,
-                    screenModel,
-                    isPlaying,
-                    showRadio
-                )
+                AnimatedVisibility(true) {
+                    HomeContent(
+                        (state as Result).result,
+                        pullRefreshState,
+                        screenModel,
+                        isPlaying,
+                        showRadio
+                    )
+                }
 
             is Init -> screenModel.getHome()
         }
@@ -123,8 +126,10 @@ object HomeScreen : Screen {
                         }
                     }
                 }
-                if (showRadio) {
-                    item {
+                item {
+                    AnimatedVisibility(
+                        showRadio
+                    ) {
                         RadioPlayer(
                             isPlaying = isPlaying,
                             onPause = screenModel::pause,
