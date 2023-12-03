@@ -89,7 +89,7 @@ object HomeScreen : Screen {
         ) {
             LazyColumn(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Top,
+                verticalArrangement = Arrangement.Top
             ) {
                 item {
                     TopBar()
@@ -136,9 +136,9 @@ object HomeScreen : Screen {
                 state = pullRefreshState,
                 contentColor = primaryBlue,
                 modifier =
-                Modifier.align(
-                    Alignment.TopCenter
-                ),
+                    Modifier.align(
+                        Alignment.TopCenter
+                    ),
                 backgroundColor = Color.Transparent
             )
         }

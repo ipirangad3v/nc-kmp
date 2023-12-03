@@ -41,10 +41,11 @@ fun RadioPlayer(
     modifier: Modifier = Modifier
 ) {
     Surface(
-        modifier = modifier
-            .fillMaxWidth()
-            .height(130.dp)
-            .padding(16.dp),
+        modifier =
+            modifier
+                .fillMaxWidth()
+                .height(130.dp)
+                .padding(16.dp),
         shape = RoundedCornerShape(16.dp),
         color = primaryBlue
     ) {
@@ -56,9 +57,9 @@ fun RadioPlayer(
             // Assuming you have a drawable resource for your logo
             Image(
                 modifier =
-                Modifier
-                    .width(100.dp)
-                    .height(100.dp),
+                    Modifier
+                        .width(100.dp)
+                        .height(100.dp),
                 painter = painterResource("images/boasnovas.jpeg"),
                 contentDescription = "logo"
             )
@@ -87,7 +88,6 @@ fun RadioPlayer(
     }
 }
 
-
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 private fun Controls(
@@ -104,13 +104,13 @@ private fun Controls(
         ) {
             Icon(
                 painter =
-                if (isPlaying) {
-                    painterResource("images/pause.png")
-                } else {
-                    painterResource(
-                        "images/play.png"
-                    )
-                },
+                    if (isPlaying) {
+                        painterResource("images/pause.png")
+                    } else {
+                        painterResource(
+                            "images/play.png"
+                        )
+                    },
                 contentDescription = "",
                 modifier = Modifier.size(50.dp),
                 tint = BluePrimaryDark

@@ -8,6 +8,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
@@ -19,6 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -86,14 +90,19 @@ object SignUpScreen : Screen {
                     ) {
                         Image(
                             modifier =
-                            Modifier
-                                .width(200.dp)
-                                .height(200.dp),
+                                Modifier
+                                    .width(200.dp)
+                                    .height(200.dp),
                             painter = painterResource("images/logonegativa.png"),
                             contentDescription = "logo"
                         )
+                        Text(
+                            text = "Criar conta",
+                            style = MaterialTheme.typography.headlineMedium
+                        )
                         Spacer(modifier = Modifier.height(20.dp))
                         EditTextWithErrorMessage(
+                            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
                             error = viewState.value.emailError,
                             label = "Email",
                             value = viewState.value.email,
@@ -106,6 +115,7 @@ object SignUpScreen : Screen {
                             )
                         }
                         EditTextWithErrorMessage(
+                            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
                             error = viewState.value.usernameError,
                             label = "Nome de usuário",
                             value = viewState.value.username,
@@ -118,6 +128,7 @@ object SignUpScreen : Screen {
                             )
                         }
                         EditTextWithErrorMessage(
+                            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
                             error = viewState.value.passwordError,
                             label = "Senha",
                             value = viewState.value.password,
@@ -125,24 +136,24 @@ object SignUpScreen : Screen {
                             rightIcon = {
                                 Image(
                                     modifier =
-                                    Modifier
-                                        .width(30.dp)
-                                        .height(30.dp).clickable {
-                                            showPassword.value = !showPassword.value
-                                        },
+                                        Modifier
+                                            .width(30.dp)
+                                            .height(30.dp).clickable {
+                                                showPassword.value = !showPassword.value
+                                            },
                                     painter =
-                                    painterResource(
-                                        if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
-                                    ),
+                                        painterResource(
+                                            if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
+                                        ),
                                     contentDescription = "logo"
                                 )
                             },
                             visualTransformation =
-                            if (showPassword.value) {
-                                VisualTransformation.None
-                            } else {
-                                PasswordVisualTransformation()
-                            }
+                                if (showPassword.value) {
+                                    VisualTransformation.None
+                                } else {
+                                    PasswordVisualTransformation()
+                                }
                         ) {
                             screenModel.setEvent(
                                 SignUpContract.SignUpEvent.PasswordChanged(
@@ -151,6 +162,7 @@ object SignUpScreen : Screen {
                             )
                         }
                         EditTextWithErrorMessage(
+                            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
                             error = viewState.value.confirmPasswordError,
                             value = viewState.value.confirmPassword,
                             label = "Confirmar senha",
@@ -158,24 +170,24 @@ object SignUpScreen : Screen {
                             rightIcon = {
                                 Image(
                                     modifier =
-                                    Modifier
-                                        .width(30.dp)
-                                        .height(30.dp).clickable {
-                                            showPassword.value = !showPassword.value
-                                        },
+                                        Modifier
+                                            .width(30.dp)
+                                            .height(30.dp).clickable {
+                                                showPassword.value = !showPassword.value
+                                            },
                                     painter =
-                                    painterResource(
-                                        if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
-                                    ),
+                                        painterResource(
+                                            if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
+                                        ),
                                     contentDescription = "logo"
                                 )
                             },
                             visualTransformation =
-                            if (showPassword.value) {
-                                VisualTransformation.None
-                            } else {
-                                PasswordVisualTransformation()
-                            }
+                                if (showPassword.value) {
+                                    VisualTransformation.None
+                                } else {
+                                    PasswordVisualTransformation()
+                                }
                         ) {
                             screenModel.setEvent(
                                 SignUpContract.SignUpEvent.ConfirmPasswordChanged(

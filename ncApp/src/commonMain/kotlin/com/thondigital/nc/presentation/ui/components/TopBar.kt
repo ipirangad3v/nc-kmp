@@ -41,9 +41,9 @@ fun TopBar(
                 if (showLogo) {
                     Image(
                         modifier =
-                        Modifier
-                            .width(30.dp)
-                            .height(30.dp),
+                            Modifier
+                                .width(30.dp)
+                                .height(30.dp),
                         painter = painterResource("images/logonegativa.png"),
                         contentDescription = "logo"
                     )
@@ -51,23 +51,23 @@ fun TopBar(
                     Text(text = "Nação da Cruz", color = primaryBlue)
                     Spacer(modifier = Modifier.width(48.dp))
                 }
-
-
             }
         },
         navigationIcon = {
-            if(showBackButton){
+            if (showBackButton) {
                 IconButton(onClick = onBackClick) {
                     Icon(Icons.Rounded.ArrowBack, contentDescription = "Back")
                 }
             }
         },
-        colors = topAppBarColors(
-            containerColor = Color.Transparent,
-            scrolledContainerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(
-                elevation = 8.dp
-            ),
-            titleContentColor = MaterialTheme.colorScheme.onBackground
-        )
+        colors =
+            topAppBarColors(
+                containerColor = Color.Transparent,
+                scrolledContainerColor =
+                    MaterialTheme.colorScheme.surfaceColorAtElevation(
+                        elevation = 8.dp
+                    ),
+                titleContentColor = MaterialTheme.colorScheme.onBackground
+            )
     )
 }

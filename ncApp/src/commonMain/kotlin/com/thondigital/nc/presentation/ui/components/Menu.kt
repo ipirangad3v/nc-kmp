@@ -13,21 +13,30 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.thondigital.nc.presentation.navigation.NavigationHelper.getNavigationItems
+import kotlin.math.ceil
 
 @Composable
 fun Menu() {
+    val items = getNavigationItems()
+    val menuItemHeight = 100.dp
+    val columns = 3
+    val sizeMultiplier = 1.25f
     val navigator = LocalNavigator.currentOrThrow
+
+    val rows = ceil(items.size / columns.toFloat()).toInt()
+
+    val totalHeight = menuItemHeight * rows
+
+    val adjustedHeight = totalHeight * sizeMultiplier + 16.dp
+
     LazyVerticalGrid(
-        modifier =
-        Modifier.fillMaxWidth().height(
-            400.dp
-        ),
-        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-        columns = GridCells.Adaptive(minSize = 100.dp),
+        modifier = Modifier.fillMaxWidth().height(adjustedHeight),
+        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp),
+        columns = GridCells.Fixed(columns),
         verticalArrangement = Arrangement.Top,
-        horizontalArrangement = Arrangement.Center
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        items(getNavigationItems()) {
+        items(items) {
             MenuItem(it) {
                 navigator.push(it.screen)
             }

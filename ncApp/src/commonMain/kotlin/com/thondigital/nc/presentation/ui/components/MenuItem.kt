@@ -69,6 +69,5 @@ fun MenuItem(
                     textAlign = TextAlign.Center
                 )
         )
-        Spacer(modifier = Modifier.height(16.dp))
     }
 }

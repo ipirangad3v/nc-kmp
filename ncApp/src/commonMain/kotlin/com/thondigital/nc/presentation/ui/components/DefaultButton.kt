@@ -11,7 +11,10 @@ import com.thondigital.nc.presentation.ui.theme.Yellow
 import com.thondigital.nc.presentation.ui.theme.primaryBlue
 
 @Composable
-fun DefaultButton(text: String, onClick: () -> Unit) {
+fun DefaultButton(
+    text: String,
+    onClick: () -> Unit
+) {
     Button(
         modifier = Modifier.wrapContentSize(),
         onClick = onClick,
@@ -19,5 +22,4 @@ fun DefaultButton(text: String, onClick: () -> Unit) {
     ) {
         Text(text, color = Yellow, fontSize = 16.sp)
     }
-
 }
