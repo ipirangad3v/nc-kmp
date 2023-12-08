@@ -1,9 +1,9 @@
 package com.thondigital.nc.network.source.cache
 
-import com.thondigital.nc.AppDatabase
 import com.thondigital.nc.data.model.TokensDataModel
 import com.thondigital.nc.data.source.preferences.PreferencesDataSource
 import com.thondigital.nc.network.sqldriver.DatabaseDriverFactory
+import digital.thon.nc.AppDatabase
 
 class PreferencesDataSourceImpl(
     databaseDriverFactory: DatabaseDriverFactory
