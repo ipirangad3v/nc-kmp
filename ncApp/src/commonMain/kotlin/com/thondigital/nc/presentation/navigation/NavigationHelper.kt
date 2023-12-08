@@ -1,11 +1,12 @@
 package com.thondigital.nc.presentation.navigation
 
-import com.thondigital.nc.common.utils.openInstagramProfile
-import com.thondigital.nc.common.utils.openSpotify
-import com.thondigital.nc.common.utils.openYouTubeChannel
+import Kmule.openInstagramProfile
+import Kmule.openSpotify
+import Kmule.openYouTubeChannel
 import com.thondigital.nc.domain.model.ClickableMenuItem
+import com.thondigital.nc.network.model.NetworkConstants
 import com.thondigital.nc.presentation.ui.calendar.CalendarScreen
-import com.thondigital.nc.presentation.ui.podcast.ExternalScreen
+import com.thondigital.nc.presentation.ui.external.ExternalScreen
 
 object NavigationHelper {
     fun getNavigationItems(): List<ClickableMenuItem> =
@@ -18,7 +19,7 @@ object NavigationHelper {
             ClickableMenuItem(
                 screen =
                     ExternalScreen {
-                        openSpotify()
+                        openSpotify(NetworkConstants.SPOTIFY_SHOW_ID)
                     },
                 resourceId = "podcast.png",
                 name = "Podcast"
@@ -26,7 +27,9 @@ object NavigationHelper {
             ClickableMenuItem(
                 screen =
                     ExternalScreen {
-                        openYouTubeChannel()
+                        openYouTubeChannel(
+                            NetworkConstants.YOUTUBE_CHANNEL_ID
+                        )
                     },
                 resourceId = "youtube.png",
                 name = "Youtube"
@@ -34,7 +37,9 @@ object NavigationHelper {
             ClickableMenuItem(
                 screen =
                     ExternalScreen {
-                        openInstagramProfile()
+                        openInstagramProfile(
+                            NetworkConstants.INSTAGRAM_PROFILE_ID
+                        )
                     },
                 resourceId = "instagram.png",
                 name = "Instagram"

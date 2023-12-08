@@ -107,6 +107,9 @@ kotlin {
 
             // sqlDelight
             implementation(libs.sqlDelight)
+
+            // kmule
+            implementation(libs.kmule.core)
         }
     }
 }

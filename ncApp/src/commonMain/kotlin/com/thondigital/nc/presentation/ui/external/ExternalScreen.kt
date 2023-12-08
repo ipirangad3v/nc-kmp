@@ -1,4 +1,4 @@
-package com.thondigital.nc.presentation.ui.podcast
+package com.thondigital.nc.presentation.ui.external
 
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen

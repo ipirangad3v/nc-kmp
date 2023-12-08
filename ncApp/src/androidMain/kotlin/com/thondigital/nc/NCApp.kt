@@ -1,5 +1,6 @@
 package com.thondigital.nc
 
+import Kmule.startKmule
 import android.app.Application
 import android.content.Context
 import com.thondigital.nc.di.dataModule
@@ -31,5 +32,6 @@ class NCApp : Application() {
             )
         }
         appContext = applicationContext
+        startKmule { appContext }
     }
 }
