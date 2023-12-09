@@ -74,7 +74,16 @@ object SignInScreen : Screen {
                     SignUpScreen
                 )
 
-            is NavigateToHome -> navigator.pop()
+            is NavigateToHome -> {
+                scope.launch {
+                    snackbarHostState.showSnackbar(
+                        "Login efetuado com sucesso",
+                        duration = SnackbarDuration.Short
+                    )
+                }
+                navigator.pop()
+            }
+
             else -> Unit
         }
         Scaffold(

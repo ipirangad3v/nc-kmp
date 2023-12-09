@@ -17,5 +17,5 @@ interface AccountRepository {
         confirmNewPassword: String
     ): DataResult<String>
 
-    suspend fun deleteAccount()
+    suspend fun deleteAccount(): DataResult<String>
 }

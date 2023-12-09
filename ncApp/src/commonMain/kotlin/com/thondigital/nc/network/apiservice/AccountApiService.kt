@@ -8,4 +8,6 @@ interface AccountApiService {
     suspend fun getAccount(): AccountNetworkModel
 
     suspend fun updatePassword(passwordRequest: PasswordRequest): GenericResponse
+
+    suspend fun deleteAccount(): GenericResponse
 }

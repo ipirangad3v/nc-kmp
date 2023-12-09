@@ -51,4 +51,17 @@ class AccountNetworkDataSourceImpl(
             DataResult.Error(exception)
         }
     }
+
+    override suspend fun deleteAccount(): DataResult<String> {
+        if (!connectivityChecker.isNetworkAvailable()) {
+            return DataResult.Error(NetworkException.NetworkUnavailable)
+        }
+        return try {
+            DataResult.Success(
+                accountApiService.deleteAccount().message
+            )
+        } catch (exception: Exception) {
+            DataResult.Error(exception)
+        }
+    }
 }

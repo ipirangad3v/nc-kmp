@@ -77,6 +77,6 @@ val networkModule =
             )
         }
         single<AuthApiService> { AuthApiServiceImpl(get()) }
-        single<AccountApiService> { AccountApiServiceImpl(get()) }
+        single<AccountApiService> { AccountApiServiceImpl(get(), get()) }
         single<AccountCacheDataSource> { AccountCacheDataSourceImpl(get()) }
     }

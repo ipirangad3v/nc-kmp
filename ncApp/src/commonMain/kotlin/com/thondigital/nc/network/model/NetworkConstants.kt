@@ -1,6 +1,7 @@
 package com.thondigital.nc.network.model
 
 object NetworkConstants {
+    const val DELETE_ACCOUNT_ENDPOINT = "auth/delete"
     const val YOUTUBE_CHANNEL_ID = "@nacaodacruzchurch1612"
     const val INSTAGRAM_PROFILE_ID = "nacaodacruz.church"
     const val BASE_ENDPOINT = "https://nc-server-332d35e07665.herokuapp.com/"

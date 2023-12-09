@@ -32,6 +32,7 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.thondigital.nc.data.remote.responses.HomeResponse
 import com.thondigital.nc.domain.model.AccountDomainModel
 import com.thondigital.nc.presentation.ui.auth.signin.SignInScreen
+import com.thondigital.nc.presentation.ui.components.DefaultButton
 import com.thondigital.nc.presentation.ui.components.EventsList
 import com.thondigital.nc.presentation.ui.components.Loading
 import com.thondigital.nc.presentation.ui.components.Menu
@@ -100,6 +101,13 @@ object HomeScreen : Screen {
                 item {
                     TopBar()
                 }
+                item {
+                    DefaultButton(
+                        text = "Deletar Conta"
+                    ) {
+                        screenModel.deleteAccount()
+                    }
+                }
                 if (result.isUserAuthenticated) {
                     result.account?.let {
                         item {
@@ -156,11 +164,14 @@ object HomeScreen : Screen {
 
     @Composable
     private fun AccountHeader(account: AccountDomainModel) {
-        Text(
-            text = "Olá, ${account.username}",
-            modifier = Modifier.fillMaxWidth().padding(16.dp),
-            style = MaterialTheme.typography.bodyLarge
-        )
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(16.dp)
+        ) {
+            Text(
+                text = "Olá, ${account.username}",
+                style = MaterialTheme.typography.bodyLarge
+            )
+        }
     }
 
     @Composable

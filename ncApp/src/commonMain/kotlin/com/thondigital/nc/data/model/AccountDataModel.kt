@@ -7,5 +7,5 @@ data class AccountDataModel(
     val pk: Int,
     val email: String,
     val username: String,
-    val isAdmin: Boolean,
+    val isAdmin: Boolean
 )

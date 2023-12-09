@@ -8,6 +8,7 @@ import cafe.adriel.voyager.core.model.screenModelScope
 import com.thondigital.nc.audioplayer.AudioPlayer
 import com.thondigital.nc.audioplayer.PlayerState
 import com.thondigital.nc.data.remote.responses.HomeResponse
+import com.thondigital.nc.domain.usecase.account.delete.DeleteAccountUseCase
 import com.thondigital.nc.domain.usecase.account.detail.GetAccountUseCase
 import com.thondigital.nc.domain.usecase.auth.status.AuthenticationStatusUseCase
 import dev.gitlive.firebase.Firebase
@@ -17,7 +18,8 @@ import kotlinx.coroutines.launch
 
 class HomeScreenModel(
     private val authenticationStatusUseCase: AuthenticationStatusUseCase,
-    private val getAccountUseCase: GetAccountUseCase
+    private val getAccountUseCase: GetAccountUseCase,
+    private val deleteAccountUseCase: DeleteAccountUseCase
 ) : StateScreenModel<HomeScreenModel.State>(State.Init) {
     private val playerState = PlayerState()
     var isPlaying: Boolean by mutableStateOf(playerState.isPlaying)
@@ -89,5 +91,11 @@ class HomeScreenModel(
     override fun onDispose() {
         super.onDispose()
         player.cleanUp()
+    }
+
+    fun deleteAccount() {
+        screenModelScope.launch {
+            deleteAccountUseCase().also { getHome() }
+        }
     }
 }

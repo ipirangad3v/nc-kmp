@@ -32,13 +32,13 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getNavigatorScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.thondigital.nc.presentation.ui.auth.signin.SignInScreen
 import com.thondigital.nc.presentation.ui.auth.signup.SignUpContract.SignUpViewEffect.NavigateToHome
 import com.thondigital.nc.presentation.ui.auth.signup.SignUpContract.SignUpViewEffect.ShowSnackBarError
 import com.thondigital.nc.presentation.ui.components.DefaultButton
 import com.thondigital.nc.presentation.ui.components.EditTextWithErrorMessage
 import com.thondigital.nc.presentation.ui.components.Loading
 import com.thondigital.nc.presentation.ui.components.TopBar
+import com.thondigital.nc.presentation.ui.home.HomeScreen
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
@@ -66,7 +66,7 @@ object SignUpScreen : Screen {
                     )
                 }
 
-            is NavigateToHome -> navigator.push(SignInScreen)
+            is NavigateToHome -> navigator.push(HomeScreen)
             else -> Unit
         }
         Scaffold(

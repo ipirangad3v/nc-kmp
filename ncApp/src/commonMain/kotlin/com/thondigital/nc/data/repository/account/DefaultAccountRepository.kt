@@ -58,7 +58,14 @@ class DefaultAccountRepository(
         }
     }
 
-    override suspend fun deleteAccount() {
+    override suspend fun deleteAccount(): DataResult<String> {
         accountCacheDataSource.deleteAccount()
+        return when (
+            val result =
+                accountNetworkDataSource.deleteAccount()
+        ) {
+            is DataResult.Success -> DataResult.Success(result.data)
+            is DataResult.Error -> DataResult.Error(result.exception)
+        }
     }
 }

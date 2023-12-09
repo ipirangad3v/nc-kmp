@@ -1,5 +1,6 @@
 package com.thondigital.nc.di
 
+import com.thondigital.nc.domain.usecase.account.delete.DeleteAccountUseCase
 import com.thondigital.nc.domain.usecase.account.detail.GetAccountUseCase
 import com.thondigital.nc.domain.usecase.auth.signin.email.SignInUseCase
 import com.thondigital.nc.domain.usecase.auth.signup.SignUpUseCase
@@ -19,7 +20,8 @@ val presentationModule =
         factory {
             HomeScreenModel(
                 AuthenticationStatusUseCase(get()),
-                GetAccountUseCase(get())
+                GetAccountUseCase(get()),
+                DeleteAccountUseCase(get())
             )
         }
         factory { CalendarScreenModel() }

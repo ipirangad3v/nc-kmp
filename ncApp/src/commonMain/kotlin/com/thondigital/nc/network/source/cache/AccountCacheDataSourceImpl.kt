@@ -52,5 +52,3 @@ class AccountCacheDataSourceImpl(
         dbQuery.deleteAccount()
     }
 }
-
-

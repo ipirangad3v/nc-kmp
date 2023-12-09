@@ -11,4 +11,6 @@ interface AccountNetworkDataSource {
         newPassword: String,
         confirmNewPassword: String
     ): DataResult<String>
+
+    suspend fun deleteAccount(): DataResult<String>
 }
