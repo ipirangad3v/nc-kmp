@@ -1,14 +1,15 @@
 CREATE TABLE Account(
     id INTEGER NOT NULL PRIMARY KEY,
     username TEXT,
-    email TEXT
+    email TEXT,
+    isAdmin INTEGER
 );
 
 fetchAccount:
 SELECT * FROM Account WHERE id = 1;
 
 storeAccount:
-INSERT INTO Account (id, username, email) VALUES (1, ?, ?);
+INSERT INTO Account (id, username, email,isAdmin) VALUES (1, ?, ?,?);
 
 deleteAccount:
 DELETE FROM Account WHERE id = 1;

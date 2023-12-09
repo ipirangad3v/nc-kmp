@@ -13,7 +13,8 @@ class AccountDataDomainMapper() :
         return AccountDomainModel(
             pk = i.pk,
             email = i.email,
-            username = i.username
+            username = i.username,
+            isAdmin = i.isAdmin
         )
     }
 
@@ -21,7 +22,8 @@ class AccountDataDomainMapper() :
         return AccountDataModel(
             pk = o.pk,
             email = o.email,
-            username = o.username
+            username = o.username,
+            isAdmin = o.isAdmin
         )
     }
 }

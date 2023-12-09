@@ -6,5 +6,6 @@ import kotlinx.serialization.Serializable
 data class AccountDataModel(
     val pk: Int,
     val email: String,
-    val username: String
+    val username: String,
+    val isAdmin: Boolean,
 )

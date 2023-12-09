@@ -13,7 +13,8 @@ class AccountNetworkDataMapper : Mapper<AccountNetworkModel, AccountDataModel> {
         return AccountDataModel(
             pk = i.id ?: throw MappingException("Account pk cannot be null"),
             email = i.email.orEmpty(),
-            username = i.username.orEmpty()
+            username = i.username.orEmpty(),
+            isAdmin = i.isAdmin
         )
     }
 
@@ -21,7 +22,8 @@ class AccountNetworkDataMapper : Mapper<AccountNetworkModel, AccountDataModel> {
         return AccountNetworkModel(
             id = o.pk,
             email = o.email,
-            username = o.username
+            username = o.username,
+            isAdmin = o.isAdmin
         )
     }
 }

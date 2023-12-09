@@ -3,6 +3,8 @@ package com.thondigital.nc.network.source.cache
 import com.thondigital.nc.data.model.AccountDataModel
 import com.thondigital.nc.data.source.cache.account.AccountCacheDataSource
 import com.thondigital.nc.network.sqldriver.DatabaseDriverFactory
+import com.thondigital.nc.network.utils.toBoolean
+import com.thondigital.nc.network.utils.toLong
 import digital.thon.nc.AppDatabase
 import io.ktor.util.logging.KtorSimpleLogger
 import kotlinx.coroutines.flow.Flow
@@ -22,7 +24,8 @@ class AccountCacheDataSourceImpl(
                     AccountDataModel(
                         pk = 1,
                         email = account.email ?: "",
-                        username = account.username ?: ""
+                        username = account.username ?: "",
+                        isAdmin = account.isAdmin.toBoolean()
                     )
                 )
             }
@@ -35,7 +38,8 @@ class AccountCacheDataSourceImpl(
             try {
                 dbQuery.storeAccount(
                     account.username,
-                    account.email
+                    account.email,
+                    account.isAdmin.toLong()
                 )
             } catch (e: Exception) {
                 KtorSimpleLogger(
@@ -48,3 +52,5 @@ class AccountCacheDataSourceImpl(
         dbQuery.deleteAccount()
     }
 }
+
+
