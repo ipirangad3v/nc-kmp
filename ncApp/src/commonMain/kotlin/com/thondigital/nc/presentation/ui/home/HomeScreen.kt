@@ -101,13 +101,6 @@ object HomeScreen : Screen {
                 item {
                     TopBar()
                 }
-                item {
-                    DefaultButton(
-                        text = "Deletar Conta"
-                    ) {
-                        screenModel.deleteAccount()
-                    }
-                }
                 if (result.isUserAuthenticated) {
                     result.account?.let {
                         item {

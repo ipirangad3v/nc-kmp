@@ -10,6 +10,7 @@ import com.thondigital.nc.audioplayer.PlayerState
 import com.thondigital.nc.data.remote.responses.HomeResponse
 import com.thondigital.nc.domain.usecase.account.delete.DeleteAccountUseCase
 import com.thondigital.nc.domain.usecase.account.detail.GetAccountUseCase
+import com.thondigital.nc.domain.usecase.account.detail.SyncAccountUseCase
 import com.thondigital.nc.domain.usecase.auth.status.AuthenticationStatusUseCase
 import dev.gitlive.firebase.Firebase
 import dev.gitlive.firebase.remoteconfig.FirebaseRemoteConfigValue
@@ -19,7 +20,7 @@ import kotlinx.coroutines.launch
 class HomeScreenModel(
     private val authenticationStatusUseCase: AuthenticationStatusUseCase,
     private val getAccountUseCase: GetAccountUseCase,
-    private val deleteAccountUseCase: DeleteAccountUseCase
+    private val syncAccountUseCase: SyncAccountUseCase,
 ) : StateScreenModel<HomeScreenModel.State>(State.Init) {
     private val playerState = PlayerState()
     var isPlaying: Boolean by mutableStateOf(playerState.isPlaying)
@@ -76,6 +77,12 @@ class HomeScreenModel(
             val userAuthenticated = authenticationStatusUseCase()
             val user = getAccountUseCase()
 
+            val isUserSync = user?.username?.isNotEmpty() == true && user.email.isNotEmpty()
+
+            if (!isUserSync) {
+                syncAccountUseCase()
+            }
+
             mutableState.value = State.Loading
             mutableState.value =
                 State.Result(
@@ -91,11 +98,5 @@ class HomeScreenModel(
     override fun onDispose() {
         super.onDispose()
         player.cleanUp()
-    }
-
-    fun deleteAccount() {
-        screenModelScope.launch {
-            deleteAccountUseCase().also { getHome() }
-        }
     }
 }
