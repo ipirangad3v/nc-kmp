@@ -1,7 +1,7 @@
 package com.thondigital.nc.audioplayer
 
-import com.thondigital.nc.ObserverProtocol
 import com.thondigital.nc.network.model.NetworkConstants.RBN_STREAMING_ENDPOINT
+import digital.thon.nc.ObserverProtocol
 import kotlinx.cinterop.COpaquePointer
 import kotlinx.cinterop.CValue
 import kotlinx.cinterop.ExperimentalForeignApi

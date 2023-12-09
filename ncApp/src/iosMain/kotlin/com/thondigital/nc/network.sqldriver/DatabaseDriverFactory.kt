@@ -2,7 +2,7 @@ package com.thondigital.nc.network.sqldriver
 
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.native.NativeSqliteDriver
-import com.thondigital.nc.AppDatabase
+import digital.thon.nc.AppDatabase
 
 actual class DatabaseDriverFactory {
     actual fun createDriver(): SqlDriver {
