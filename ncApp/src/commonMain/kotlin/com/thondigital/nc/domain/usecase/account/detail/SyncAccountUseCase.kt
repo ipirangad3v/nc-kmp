@@ -16,6 +16,7 @@ class SyncAccountUseCase(
                     accountRepository.requestAccount()
                 }
         ) {
+            //TODO
             is DataResult.Success -> {
                 accountRepository.storeAccount(result.data)
                 DataResult.Success(Unit)
