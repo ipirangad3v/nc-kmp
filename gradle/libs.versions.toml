@@ -1,5 +1,5 @@
 [versions]
-ktor = "2.3.6"
+ktor = "2.3.7"
 logback = "1.4.11"
 compose = "1.5.4"
 compose-plugin = "1.5.10"
@@ -8,19 +8,19 @@ agp = "8.2.0"
 android-minSdk = "24"
 android-compileSdk = "34"
 android-targetSdk = "34"
-androidx-activityCompose = "1.8.1"
+androidx-activityCompose = "1.8.2"
 androidx-core-ktx = "1.12.0"
 androidx-appcompat = "1.6.1"
-androidx-material = "1.10.0"
+androidx-material = "1.11.0"
 androidx-constraintlayout = "2.1.4"
 androidx-test-junit = "1.1.5"
 androidx-espresso-core = "3.5.1"
-voyager = "1.0.0-rc10"
+voyager = "1.0.0"
 kotlin = "1.9.20"
 junit = "4.13.2"
 koin = "3.5.0"
 google-services = "4.4.0"
-firebase-bom = "32.6.0"
+firebase-bom = "32.7.0"
 firebase-crashlytics = "2.9.9"
 qdsfdhvh-image-loader = "1.5.3"
 firebase-common = "20.4.2"
@@ -31,7 +31,7 @@ datetime = "0.4.0"
 sqlDelight = "2.0.0"
 exoplayer = "1.2.0"
 work-runtime-ktx = "2.9.0"
-kmule = "0.0.2"
+kmule = "0.0.1"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -56,7 +56,6 @@ voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.
 voyager-bottomSheetNavigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
 voyager-tabNavigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
 voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
-voyager-androidx = { module = "cafe.adriel.voyager:voyager-androidx", version.ref = "voyager" }
 voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version = "2.6.2" }
 android-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }

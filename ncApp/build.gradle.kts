@@ -57,7 +57,6 @@ kotlin {
             implementation(libs.compose.ui)
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
-            implementation(libs.voyager.androidx)
             implementation(libs.voyager.koin)
             implementation(libs.voyager.bottomSheetNavigator)
             implementation(libs.voyager.navigator)
