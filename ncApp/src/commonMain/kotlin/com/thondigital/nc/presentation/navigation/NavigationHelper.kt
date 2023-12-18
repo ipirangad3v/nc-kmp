@@ -1,8 +1,8 @@
 package com.thondigital.nc.presentation.navigation
 
-import Kmule.openInstagramProfile
+import Kmule.openInstagram
 import Kmule.openSpotify
-import Kmule.openYouTubeChannel
+import Kmule.openYouTube
 import com.thondigital.nc.domain.model.ClickableMenuItem
 import com.thondigital.nc.network.model.NetworkConstants
 import com.thondigital.nc.presentation.ui.account.AccountScreen
@@ -23,14 +23,30 @@ object NavigationHelper {
                     openSpotify(NetworkConstants.SPOTIFY_SHOW_ID)
                 },
                 resourceId = "podcast.png",
-                name = "Podcast"
+                name = "spotify show"
             ),
             ClickableMenuItem(
                 screen =
                 ExternalScreen {
-                    openYouTubeChannel(
+                    openSpotify()
+                },
+                resourceId = "podcast.png",
+                name = "spotify"
+            ),
+            ClickableMenuItem(
+                screen =
+                ExternalScreen {
+                    openYouTube(
                         NetworkConstants.YOUTUBE_CHANNEL_ID
                     )
+                },
+                resourceId = "youtube.png",
+                name = "Youtube CHannel"
+            ),
+            ClickableMenuItem(
+                screen =
+                ExternalScreen {
+                    openYouTube()
                 },
                 resourceId = "youtube.png",
                 name = "Youtube"
@@ -38,9 +54,17 @@ object NavigationHelper {
             ClickableMenuItem(
                 screen =
                 ExternalScreen {
-                    openInstagramProfile(
+                    openInstagram(
                         NetworkConstants.INSTAGRAM_PROFILE_ID
                     )
+                },
+                resourceId = "instagram.png",
+                name = "Instagram profile"
+            ),
+            ClickableMenuItem(
+                screen =
+                ExternalScreen {
+                    openInstagram()
                 },
                 resourceId = "instagram.png",
                 name = "Instagram"
