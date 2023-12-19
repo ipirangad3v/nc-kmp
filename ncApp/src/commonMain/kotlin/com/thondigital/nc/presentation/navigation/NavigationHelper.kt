@@ -1,8 +1,8 @@
 package com.thondigital.nc.presentation.navigation
 
-import Kmule.openInstagramProfile
+import Kmule.openInstagram
 import Kmule.openSpotify
-import Kmule.openYouTubeChannel
+import Kmule.openYouTube
 import com.thondigital.nc.domain.model.ClickableMenuItem
 import com.thondigital.nc.network.model.NetworkConstants
 import com.thondigital.nc.presentation.ui.account.AccountScreen
@@ -28,7 +28,7 @@ object NavigationHelper {
             ClickableMenuItem(
                 screen =
                 ExternalScreen {
-                    openYouTubeChannel(
+                    openYouTube(
                         NetworkConstants.YOUTUBE_CHANNEL_ID
                     )
                 },
@@ -38,7 +38,7 @@ object NavigationHelper {
             ClickableMenuItem(
                 screen =
                 ExternalScreen {
-                    openInstagramProfile(
+                    openInstagram(
                         NetworkConstants.INSTAGRAM_PROFILE_ID
                     )
                 },
