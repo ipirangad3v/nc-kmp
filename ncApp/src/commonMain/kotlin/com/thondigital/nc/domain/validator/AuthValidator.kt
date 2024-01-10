@@ -49,7 +49,7 @@ object AuthValidator {
 
     private fun isValidEmail(email: String): Boolean = Regex(MAIL_REGEX).matches(email)
 
-    private fun String.isValidName() = matches("^[a-zA-ZÀ-ÿ]+(?: [a-zA-ZÀ-ÿ]+)+$".toRegex())
+    private fun String.isValidName() = matches("^[a-zA-Z ]+\$".toRegex())
 
     private fun isValidPassword(password: String): Boolean = password.count() > PASSWORD_LENGTH
 
@@ -65,5 +65,5 @@ object AuthValidator {
             "([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?" +
             "[0-9]{1,2}|25[0-5]|2[0-4][0-9]))|" +
             "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$"
-    )
+        )
 }
