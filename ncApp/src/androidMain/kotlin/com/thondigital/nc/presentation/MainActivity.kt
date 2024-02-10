@@ -1,4 +1,4 @@
-package com.thondigital.nc
+package com.thondigital.nc.presentation
 
 import App
 import android.os.Bundle
