@@ -101,21 +101,21 @@ object HomeScreen : Screen {
                 item {
                     TopBar()
                 }
-                if (result.isUserAuthenticated) {
-                    result.account?.let {
-                        item {
-                            AccountHeader(it)
-                        }
-                    }
-                } else {
-                    item {
-                        LoginButton {
-                            navigator.push(
-                                SignInScreen
-                            )
-                        }
-                    }
-                }
+//                if (result.isUserAuthenticated) {
+//                    result.account?.let {
+//                        item {
+//                            AccountHeader(it)
+//                        }
+//                    }
+//                } else {
+//                    item {
+//                        LoginButton {
+//                            navigator.push(
+//                                SignInScreen
+//                            )
+//                        }
+//                    }
+//                }
                 item {
                     if (result.events.isNotEmpty()) {
                         EventsList(result.events) { event ->

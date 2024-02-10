@@ -15,7 +15,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.core.annotation.ExperimentalVoyagerApi
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getNavigatorScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
@@ -27,7 +26,6 @@ import com.thondigital.nc.presentation.ui.components.TopBar
 import kotlinx.coroutines.launch
 
 object AccountScreen : Screen {
-    @OptIn(ExperimentalVoyagerApi::class)
     @Composable
     override fun Content() {
 
