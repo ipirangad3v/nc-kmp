@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.googleServices)
     alias(libs.plugins.firebaseCrashlytics)
-    kotlin("plugin.serialization").version("1.9.20")
+    kotlin("plugin.serialization").version("1.9.21")
     id("app.cash.sqldelight").version("2.0.0")
 }
 
