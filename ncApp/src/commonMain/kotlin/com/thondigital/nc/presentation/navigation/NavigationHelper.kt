@@ -9,16 +9,17 @@ import com.thondigital.nc.network.model.NetworkConstants
 import com.thondigital.nc.network.model.NetworkConstants.LAT
 import com.thondigital.nc.network.model.NetworkConstants.LNG
 import com.thondigital.nc.network.model.NetworkConstants.NC_NAME
+import com.thondigital.nc.bible.presentation.ui.bible.books.BibleBooksScreen
 import com.thondigital.nc.presentation.ui.external.ExternalScreen
 
 object NavigationHelper {
     fun getNavigationItems(): List<ClickableMenuItem> =
         listOf(
-            //            ClickableMenuItem(
-            //                screen = CalendarScreen,
-            //                resourceId = "calendar.png",
-            //                name = "Calendário"
-            //            ),
+                        ClickableMenuItem(
+                            screen = BibleBooksScreen,
+                            resourceId = "bible.png",
+                            name = "Bíblia"
+                        ),
             //            ClickableMenuItem(
             //                screen =
             //                ExternalScreen {

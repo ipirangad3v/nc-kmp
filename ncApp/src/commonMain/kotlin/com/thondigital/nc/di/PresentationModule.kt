@@ -9,6 +9,7 @@ import com.thondigital.nc.domain.usecase.auth.status.AuthenticationStatusUseCase
 import com.thondigital.nc.presentation.ui.account.AccountScreenModel
 import com.thondigital.nc.presentation.ui.auth.signin.SignInScreenModel
 import com.thondigital.nc.presentation.ui.auth.signup.SignUpScreenModel
+import com.thondigital.nc.bible.presentation.ui.bible.BibleBooksScreenModel
 import com.thondigital.nc.presentation.ui.calendar.CalendarScreenModel
 import com.thondigital.nc.presentation.ui.event.EventDetailsScreenModel
 import com.thondigital.nc.presentation.ui.home.HomeScreenModel
@@ -27,6 +28,7 @@ val presentationModule =
             )
         }
         factory { CalendarScreenModel() }
+        factory { BibleBooksScreenModel() }
         factory { EventDetailsScreenModel() }
         factory { SignInScreenModel(SignInUseCase(get(), get(named("ioDispatcher")))) }
         factory {
