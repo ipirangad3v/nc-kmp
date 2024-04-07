@@ -21,18 +21,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.core.annotation.ExperimentalVoyagerApi
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getNavigatorScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.thondigital.nc.presentation.extensions.painterResourceFromPath
+import com.thondigital.nc.presentation.extensions.resourceFromShowPassword
 import com.thondigital.nc.presentation.ui.auth.signin.SignInContract.SignInViewEffect.Init
 import com.thondigital.nc.presentation.ui.auth.signin.SignInContract.SignInViewEffect.NavigateToHome
 import com.thondigital.nc.presentation.ui.auth.signin.SignInContract.SignInViewEffect.NavigateToSignUp
@@ -43,11 +43,8 @@ import com.thondigital.nc.presentation.ui.components.EditTextWithErrorMessage
 import com.thondigital.nc.presentation.ui.components.Loading
 import com.thondigital.nc.presentation.ui.components.TopBar
 import kotlinx.coroutines.launch
-import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.painterResource
 
 object SignInScreen : Screen {
-    @OptIn(ExperimentalResourceApi::class, ExperimentalVoyagerApi::class, ExperimentalComposeUiApi::class)
     @Composable
     override fun Content() {
         val scope = rememberCoroutineScope()
@@ -107,10 +104,10 @@ object SignInScreen : Screen {
                     ) {
                         Image(
                             modifier =
-                                Modifier
-                                    .width(200.dp)
-                                    .height(200.dp),
-                            painter = painterResource("images/logonegativa.png"),
+                            Modifier
+                                .width(200.dp)
+                                .height(200.dp),
+                            painter = painterResourceFromPath("images/logonegativa.png"),
                             contentDescription = "logo"
                         )
                         Spacer(modifier = Modifier.height(20.dp))
@@ -148,24 +145,22 @@ object SignInScreen : Screen {
                             rightIcon = {
                                 Image(
                                     modifier =
-                                        Modifier
-                                            .width(30.dp)
-                                            .height(30.dp).clickable {
-                                                showPassword.value = !showPassword.value
-                                            },
+                                    Modifier
+                                        .width(30.dp)
+                                        .height(30.dp).clickable {
+                                            showPassword.value = !showPassword.value
+                                        },
                                     painter =
-                                        painterResource(
-                                            if (showPassword.value) "images/eye.png" else "images/eyeoff.png"
-                                        ),
+                                    resourceFromShowPassword(showPassword),
                                     contentDescription = "logo"
                                 )
                             },
                             visualTransformation =
-                                if (showPassword.value) {
-                                    VisualTransformation.None
-                                } else {
-                                    PasswordVisualTransformation()
-                                }
+                            if (showPassword.value) {
+                                VisualTransformation.None
+                            } else {
+                                PasswordVisualTransformation()
+                            }
                         )
                         DefaultButton("Entrar") {
                             screenModel.setEvent(SignInContract.SignInEvent.SignInButtonClicked)
@@ -174,11 +169,11 @@ object SignInScreen : Screen {
                         Text(
                             "Novo usuário? Clique aqui para se cadastrar",
                             modifier =
-                                Modifier.clickable {
-                                    screenModel.setEvent(
-                                        SignInContract.SignInEvent.SignUpTextViewClicked
-                                    )
-                                }
+                            Modifier.clickable {
+                                screenModel.setEvent(
+                                    SignInContract.SignInEvent.SignUpTextViewClicked
+                                )
+                            }
                         )
                     }
                 }

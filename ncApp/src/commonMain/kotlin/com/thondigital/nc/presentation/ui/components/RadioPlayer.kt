@@ -25,13 +25,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.thondigital.nc.presentation.extensions.painterResourceFromPath
 import com.thondigital.nc.presentation.ui.theme.BluePrimaryDark
 import com.thondigital.nc.presentation.ui.theme.Yellow
 import com.thondigital.nc.presentation.ui.theme.primaryBlue
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun RadioPlayer(
     isPlaying: Boolean,
@@ -41,10 +41,10 @@ fun RadioPlayer(
 ) {
     Surface(
         modifier =
-            modifier
-                .fillMaxWidth()
-                .height(130.dp)
-                .padding(16.dp),
+        modifier
+            .fillMaxWidth()
+            .height(130.dp)
+            .padding(16.dp),
         shape = RoundedCornerShape(16.dp),
         color = primaryBlue
     ) {
@@ -56,10 +56,10 @@ fun RadioPlayer(
             // Assuming you have a drawable resource for your logo
             Image(
                 modifier =
-                    Modifier
-                        .width(100.dp)
-                        .height(100.dp),
-                painter = painterResource("images/boasnovas.png"),
+                Modifier
+                    .width(100.dp)
+                    .height(100.dp),
+                painter = painterResourceFromPath("images/boasnovas.png"),
                 contentDescription = "logo"
             )
             Column(
@@ -104,13 +104,13 @@ private fun Controls(
         ) {
             Icon(
                 painter =
-                    if (isPlaying) {
-                        painterResource("images/pause.png")
-                    } else {
-                        painterResource(
-                            "images/play.png"
-                        )
-                    },
+                if (isPlaying) {
+                    painterResourceFromPath("images/pause.png")
+                } else {
+                    painterResourceFromPath(
+                        "images/play.png"
+                    )
+                },
                 contentDescription = "",
                 modifier = Modifier.size(iconSize),
                 tint = BluePrimaryDark

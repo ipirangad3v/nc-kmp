@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.ArrowBack
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -21,11 +21,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.thondigital.nc.presentation.extensions.painterResourceFromPath
 import com.thondigital.nc.presentation.ui.theme.primaryBlue
-import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.painterResource
 
-@OptIn(ExperimentalResourceApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(
     showBackButton: Boolean = false,
@@ -44,7 +43,7 @@ fun TopBar(
                             Modifier
                                 .width(30.dp)
                                 .height(30.dp),
-                        painter = painterResource("images/logonegativa.png"),
+                        painter = painterResourceFromPath("images/logonegativa.png"),
                         contentDescription = "logo"
                     )
                     Spacer(modifier = Modifier.width(8.dp))
@@ -56,7 +55,7 @@ fun TopBar(
         navigationIcon = {
             if (showBackButton) {
                 IconButton(onClick = onBackClick) {
-                    Icon(Icons.Rounded.ArrowBack, contentDescription = "Back")
+                    Icon(Icons.AutoMirrored.Rounded.ArrowBack, contentDescription = "Back")
                 }
             }
         },

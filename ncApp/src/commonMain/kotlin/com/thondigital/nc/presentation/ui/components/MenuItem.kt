@@ -21,11 +21,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.thondigital.nc.domain.model.ClickableMenuItem
+import com.thondigital.nc.presentation.extensions.painterResourceFromPath
 import com.thondigital.nc.presentation.ui.theme.primaryBlue
-import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.painterResource
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun MenuItem(
     item: ClickableMenuItem,
@@ -39,21 +37,19 @@ fun MenuItem(
         Box(
             contentAlignment = androidx.compose.ui.Alignment.Center,
             modifier =
-                Modifier
-                    .width(100.dp)
-                    .height(100.dp)
-                    .background(color = primaryBlue, shape = RoundedCornerShape(size = 10.dp))
+            Modifier
+                .width(100.dp)
+                .height(100.dp)
+                .background(color = primaryBlue, shape = RoundedCornerShape(size = 10.dp))
         ) {
             Image(
                 modifier =
-                    Modifier
-                        .width(80.dp)
-                        .height(80.dp),
+                Modifier
+                    .width(80.dp)
+                    .height(80.dp),
                 contentDescription = item.name,
                 painter =
-                    painterResource(
-                        "images/${item.resourceId}"
-                    )
+                painterResourceFromPath("images/${item.resourceId}")
             )
         }
         Spacer(modifier = Modifier.height(4.dp))
@@ -62,12 +58,12 @@ fun MenuItem(
             modifier = Modifier.fillMaxWidth(),
             text = item.name,
             style =
-                TextStyle(
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight(300),
-                    color = Color(0xFF494A59),
-                    textAlign = TextAlign.Center
-                )
+            TextStyle(
+                fontSize = 12.sp,
+                fontWeight = FontWeight(300),
+                color = Color(0xFF494A59),
+                textAlign = TextAlign.Center
+            )
         )
     }
 }

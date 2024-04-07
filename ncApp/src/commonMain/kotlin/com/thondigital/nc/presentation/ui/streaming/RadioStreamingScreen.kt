@@ -10,17 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.core.annotation.ExperimentalVoyagerApi
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getNavigatorScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.thondigital.nc.presentation.extensions.painterResourceFromPath
 import com.thondigital.nc.presentation.ui.components.TopBar
-import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.painterResource
 
 object RadioStreamingScreen : Screen {
-    @OptIn(ExperimentalResourceApi::class, ExperimentalVoyagerApi::class)
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
@@ -36,7 +33,7 @@ object RadioStreamingScreen : Screen {
                     Modifier
                         .width(100.dp)
                         .height(100.dp),
-                painter = painterResource("images/boasnovas.jpeg"),
+                painter = painterResourceFromPath("images/boasnovas.jpeg"),
                 contentDescription = "logo"
             )
             VideoPlayer(
