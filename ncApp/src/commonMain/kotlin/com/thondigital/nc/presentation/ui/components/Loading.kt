@@ -14,10 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.painterResource
+import com.thondigital.nc.presentation.extensions.painterResourceFromPath
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun Loading() {
     Box(
@@ -31,14 +29,14 @@ fun Loading() {
             ) {
                 Image(
                     modifier =
-                        Modifier
-                            .width(200.dp)
-                            .height(200.dp),
+                    Modifier
+                        .width(200.dp)
+                        .height(200.dp),
                     contentDescription = "carregando",
                     painter =
-                        painterResource(
-                            "images/logonegativa.png"
-                        )
+                    painterResourceFromPath(
+                        path = "images/logonegativa.png"
+                    )
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 CircularProgressIndicator()

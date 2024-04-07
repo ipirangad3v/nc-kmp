@@ -31,8 +31,6 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.thondigital.nc.data.remote.responses.HomeResponse
 import com.thondigital.nc.domain.model.AccountDomainModel
-import com.thondigital.nc.presentation.ui.auth.signin.SignInScreen
-import com.thondigital.nc.presentation.ui.components.DefaultButton
 import com.thondigital.nc.presentation.ui.components.EventsList
 import com.thondigital.nc.presentation.ui.components.Loading
 import com.thondigital.nc.presentation.ui.components.Menu
@@ -45,7 +43,7 @@ import com.thondigital.nc.presentation.ui.home.HomeScreenModel.State.Result
 import com.thondigital.nc.presentation.ui.theme.primaryBlue
 
 object HomeScreen : Screen {
-    @OptIn(ExperimentalMaterialApi::class, ExperimentalVoyagerApi::class)
+    @OptIn(ExperimentalMaterialApi::class)
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
